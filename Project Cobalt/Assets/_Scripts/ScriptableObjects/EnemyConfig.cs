@@ -6,12 +6,14 @@ using UnityEngine;
 public class EnemyConfig : ScriptableObject
 {
 
-	[SerializeField] float maxHealth;
+	[SerializeField] float maxHealth = 0;
 	public float MaxHealth { get{ return maxHealth; } }
 
+	[SerializeField] float awarenessRadius = 10;
+	public float AwarenessRadius { get{ return awarenessRadius; } }
 
-	void STOP_THIS_NONSENSE() {
+	/*void STOP_THIS_NONSENSE() {
 		maxHealth = 0;
-	}
+	}*/
 
 }

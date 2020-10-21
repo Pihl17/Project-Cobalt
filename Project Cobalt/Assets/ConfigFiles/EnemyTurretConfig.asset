@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: EnemyTurretConfig
   m_EditorClassIdentifier: 
   maxHealth: 15
+  awarenessRadius: 15

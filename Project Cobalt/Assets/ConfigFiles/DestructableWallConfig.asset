@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: DestructableWallConfig
   m_EditorClassIdentifier: 
   maxHealth: 13
+  awarenessRadius: 0
