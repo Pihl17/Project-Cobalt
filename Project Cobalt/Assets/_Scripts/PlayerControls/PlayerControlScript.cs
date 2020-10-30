@@ -10,7 +10,6 @@ public class PlayerControlScript : PlayerGUIDisplayerScript
 {
 
 	public RobotScript currentRobot;
-	public List<RobotScript> playerRobots = new List<RobotScript>();
 	
 
 	// Player input and output variables
@@ -18,9 +17,8 @@ public class PlayerControlScript : PlayerGUIDisplayerScript
 	Vector2 moveInput;
 	Vector2 faceInput;
 
-	public enum ControlStyle {TopDown, ThirdPerson};
-	public ControlStyle controlStyle;
-	Vector3 cameraOffset = new Vector3(0, 16.22f, -3.4f);
+
+	Vector3 cameraOffset = new Vector3(0, 10, -6);
 
 
 
@@ -35,11 +33,6 @@ public class PlayerControlScript : PlayerGUIDisplayerScript
 		PlayerStats.abilityInv.Add(new RechargableShield());
 		PlayerStats.abilityInv.Add(new ChargableBlast());
 		PlayerStats.abilityInv.Add(new MortarStrike());
-
-		if (controlStyle == ControlStyle.ThirdPerson) {
-			cameraOffset = new Vector3(0, 10, -6);
-			Camera.main.transform.localEulerAngles = new Vector3(50, 0, 0);
-		}
 
     }
 
@@ -67,21 +60,12 @@ public class PlayerControlScript : PlayerGUIDisplayerScript
 
 	void MoveRobot() {
 		moveInput = playerIn.actions.FindAction("Move").ReadValue<Vector2>();
-		if (controlStyle == ControlStyle.TopDown) {
-			currentRobot.Move(new Vector3(moveInput.x, 0, moveInput.y));
-		} else if (controlStyle == ControlStyle.ThirdPerson) {
-			currentRobot.Move(currentRobot.transform.TransformDirection(new Vector3(moveInput.x, 0, moveInput.y)));
-		}
+		currentRobot.Move(currentRobot.transform.TransformDirection(new Vector3(moveInput.x, 0, moveInput.y)));
 	}
 
 	void TurnRobot() {
-		if (controlStyle == ControlStyle.TopDown) {
-			faceInput = playerIn.actions.FindAction("Look").ReadValue<Vector2>();
-			currentRobot.Turn(new Vector3(faceInput.x - Camera.main.pixelWidth/2, 0, faceInput.y - Camera.main.pixelHeight/2).normalized);
-		} else if (controlStyle == ControlStyle.ThirdPerson) {
-			faceInput = playerIn.actions.FindAction("LookDelta").ReadValue<Vector2>();
-			currentRobot.transform.Rotate(Vector3.up * faceInput.x*0.2f);
-		}
+		faceInput = playerIn.actions.FindAction("LookDelta").ReadValue<Vector2>();
+		currentRobot.transform.Rotate(Vector3.up * faceInput.x*0.2f);
 	}
 
 	void TurnCamera() {
@@ -103,25 +87,6 @@ public class PlayerControlScript : PlayerGUIDisplayerScript
 				currentRobot.UseAbility(i, playerIn.actions.FindAction(string.Format("Ability{0}", i)).phase);
 		}
 	}
-
-	public void SwitchRobot(InputAction.CallbackContext context) {
-		if (context.phase == InputActionPhase.Performed) {
-			RobotScript previousRobot = currentRobot;
-			currentRobot = playerRobots[0];
-			playerRobots[0] = previousRobot;
-		}
-	}
-
-	public void CreateNewRobot(InputAction.CallbackContext context) {
-		if (context.phase == InputActionPhase.Performed) {
-			// TODO: Set up the menu for choosing abilities, and make it so that clicking the confirm on that creates a new prefab and add it to this script.
-		}
-	}
-
-	public void AddRobot(RobotScript robot) {
-		// TODO: Add the robot to the currentRobot variable, or to the playerRobots list if there is already a current robot
-	}
-
 
 	public override void SwitchToInGameUI(bool toInGameUI) {
 		base.SwitchToInGameUI(toInGameUI);

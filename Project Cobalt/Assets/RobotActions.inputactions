@@ -44,22 +44,6 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "SwitchRobot",
-                    "type": "Button",
-                    "id": "8f032442-cb08-412f-9c3d-449bdaf98e5d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "CreateNewRobot",
-                    "type": "Button",
-                    "id": "f14717c7-d5fd-44bb-9c7f-69bd766e7a84",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -302,28 +286,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "LookDelta",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2cb29c5e-ed56-49a2-84bf-eaac17c1deda",
-                    "path": "<Keyboard>/t",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "SwitchRobot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c58cb9db-a46f-43d1-869e-d5539e42fccf",
-                    "path": "<Keyboard>/g",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "CreateNewRobot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
