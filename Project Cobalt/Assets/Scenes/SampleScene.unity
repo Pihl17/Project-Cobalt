@@ -4228,7 +4228,6 @@ MonoBehaviour:
   inGameUI: {fileID: 24686143}
   choseAbilityUI: {fileID: 654099362}
   currentRobot: {fileID: 459781126}
-  playerRobots: []
 --- !u!114 &1785305210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4374,38 +4373,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 10dae250-84b7-464d-9b73-17c106d8c9b4
     m_ActionName: Robot/LookDelta[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1785305209}
-        m_TargetAssemblyTypeName: PlayerControlScript, Assembly-CSharp
-        m_MethodName: SwitchRobot
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 8f032442-cb08-412f-9c3d-449bdaf98e5d
-    m_ActionName: Robot/SwitchRobot[/Keyboard/t]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1785305209}
-        m_TargetAssemblyTypeName: PlayerControlScript, Assembly-CSharp
-        m_MethodName: CreateNewRobot
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f14717c7-d5fd-44bb-9c7f-69bd766e7a84
-    m_ActionName: Robot/CreateNewRobot[/Keyboard/g]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Robot

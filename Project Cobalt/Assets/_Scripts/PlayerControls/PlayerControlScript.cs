@@ -19,11 +19,14 @@ public class PlayerControlScript : PlayerGUIDisplayerScript
 
 
 	Vector3 cameraOffset = new Vector3(0, 10, -6);
+	float camFollowSpeed = 8;
+	float camTurnSpeed = 90;
+	Vector3 camNextPos;
+	Vector3 camNextRot;
 
 
-
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
 		playerIn = GetComponent<PlayerInput>();
 		SwitchToInGameUI(false);
@@ -69,8 +72,11 @@ public class PlayerControlScript : PlayerGUIDisplayerScript
 	}
 
 	void TurnCamera() {
-		Camera.main.transform.position = currentRobot.transform.position + Vector3.up * cameraOffset.y + Vector3.right * cameraOffset.z * Mathf.Sin(currentRobot.transform.eulerAngles.y * Mathf.Deg2Rad) + Vector3.forward * cameraOffset.z * Mathf.Cos(currentRobot.transform.eulerAngles.y * Mathf.Deg2Rad);
-		Camera.main.transform.eulerAngles = new Vector3(Camera.main.transform.eulerAngles.x, currentRobot.transform.eulerAngles.y, Camera.main.transform.eulerAngles.z);
+		camNextPos = currentRobot.transform.position + Vector3.up * cameraOffset.y + Vector3.right * cameraOffset.z * Mathf.Sin(currentRobot.transform.eulerAngles.y * Mathf.Deg2Rad) + Vector3.forward * cameraOffset.z * Mathf.Cos(currentRobot.transform.eulerAngles.y * Mathf.Deg2Rad);
+		camNextRot = new Vector3(Camera.main.transform.eulerAngles.x, currentRobot.transform.eulerAngles.y, Camera.main.transform.eulerAngles.z);
+		Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, camNextPos, Time.deltaTime * camFollowSpeed);
+		camNextRot.y = Mathf.LerpAngle(Camera.main.transform.eulerAngles.y, camNextRot.y, Time.deltaTime * camTurnSpeed);
+		Camera.main.transform.eulerAngles = camNextRot;
 	}
 
 	public void UseAbility0(InputAction.CallbackContext context) {
