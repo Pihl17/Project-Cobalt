@@ -9,7 +9,7 @@ namespace Abilities {
 	{
 
 		//int bulletDamage = 10;
-		float bulletStartHeight = 2;
+		//float bulletStartHeight = 2;
 		//float bulletExplodeRadius = 1.5f;
 
 		public MortarStrike() {
@@ -19,10 +19,10 @@ namespace Abilities {
 		public override void Use(AbilityContext context) {
 			if (ReadyToUse()) {
 				if (context.triggerPhase == InputActionPhase.Performed) {
-					GameObject newBullet = GameObject.Instantiate(configFile.InstantiatableObjects[0], context.userTrans.position + Vector3.up * bulletStartHeight, Quaternion.identity);
-					newBullet.GetComponent<MortarBulletScript>().Fire(CalculateMortarVelocity(context.targetVector - Vector3.up * bulletStartHeight, configFile.FloatValue[ValueName.MinCurvatureHeight]), configFile.Damage, configFile.FloatValue[ValueName.ExplosionRadius]);
+					GameObject newBullet = GameObject.Instantiate(configFile.InstantiatableObjects[0], context.userTrans.position + context.userScript.LauncherLocation, Quaternion.identity);
+					newBullet.GetComponent<MortarBulletScript>().Fire(CalculateMortarVelocity(context.targetVector - context.userScript.LauncherLocation, configFile.FloatValue[ValueName.MinCurvatureHeight]), configFile.Damage, configFile.FloatValue[ValueName.ExplosionRadius]);
 
-					Debug.DrawLine(context.userTrans.position + Vector3.up * bulletStartHeight, context.userTrans.position + Vector3.up * bulletStartHeight + (context.targetVector - Vector3.up * bulletStartHeight), Color.red, 1.0f);
+					Debug.DrawLine(context.userTrans.position + context.userScript.LauncherLocation, context.userTrans.position + context.userScript.LauncherLocation + (context.targetVector - context.userScript.LauncherLocation), Color.red, 1.0f);
 
 					cooldownTimer = 0;
 				}

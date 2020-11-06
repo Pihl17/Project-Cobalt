@@ -32,10 +32,10 @@ public class PlayerControlScript : PlayerGUIDisplayerScript
 		SwitchToInGameUI(false);
 
 		PlayerStats.abilityInv.Add(new LaserGun());
-		//PlayerStats.abilityInv.Add(new RapidFireShot());
+		PlayerStats.abilityInv.Add(new RapidFireShot());
 		PlayerStats.abilityInv.Add(new RechargableShield());
 		PlayerStats.abilityInv.Add(new ChargableBlast());
-		PlayerStats.abilityInv.Add(new MortarStrike());
+		//PlayerStats.abilityInv.Add(new MortarStrike());
 
     }
 

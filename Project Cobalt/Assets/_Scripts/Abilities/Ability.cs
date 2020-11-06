@@ -32,7 +32,11 @@ namespace Abilities {
 			return configFile.Name;
 		}
 
-		// TODO: Perhaps an interrupt function for when the player uses another ability in the middle of this one's duration, if for when an enemy interrupts them with an attack or the like?
+		public static void ApplyDamageToEnemy(Collider collider, float amount) {
+			if (collider.GetComponent<DestructableScript>()) {
+				collider.GetComponent<DestructableScript>().Damage(amount);
+			}
+		}
 
 
 	}
@@ -42,17 +46,7 @@ namespace Abilities {
 		public InputActionPhase triggerPhase;
 		public Transform userTrans;
 		public Vector3 targetVector;
-		//public Vector3 targetPos;
-		//public Vector3 faceDirection;
-		//public Vector3 userPos;
 		public RobotAbilityUseScript userScript;
-
-		/*public AbilityContext(InputActionPhase _triggerPhase, Vector3 _faceDirection, Vector3 _userPos, RobotAbilityUseScript _userScript) {
-			triggerPhase = _triggerPhase;
-			faceDirection = _faceDirection;
-			userPos = _userPos;
-			userScript = _userScript;
-		}*/
 
 		public AbilityContext(InputActionPhase _triggerPhase, Transform _userTrans, Vector3 _targetVector, RobotAbilityUseScript _userScript) {
 			triggerPhase = _triggerPhase;

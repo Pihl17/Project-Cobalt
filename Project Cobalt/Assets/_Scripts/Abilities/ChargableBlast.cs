@@ -68,10 +68,11 @@ namespace Abilities {
 
                     for (int i = 0; i < colliders.Length; i++)
                     {
-                        if (colliders[i].GetComponent<DestructableScript>())
+						ApplyDamageToEnemy(colliders[i], Mathf.Lerp(configFile.Damage, configFile.Damage * configFile.FloatValue[ValueName.DamageMultiplier], chargeLevel));
+						/*if (colliders[i].GetComponent<DestructableScript>())
                         {
                             colliders[i].GetComponent<DestructableScript>().Damage(Mathf.Lerp(configFile.Damage, configFile.Damage * configFile.FloatValue[ValueName.DamageMultiplier], chargeLevel));
-                        }
+                        }*/
                     }
 
                     blastVisual.SetFloat("_ChargeProcent", 0.0f);

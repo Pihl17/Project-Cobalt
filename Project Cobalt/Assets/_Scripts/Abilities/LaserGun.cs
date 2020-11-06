@@ -27,10 +27,11 @@ namespace Abilities {
                     if (Physics.Raycast(context.userTrans.position, context.targetVector.normalized, out hit, configFile.Range))
                     {
                         laserBeam.SetPosition(1, hit.point);
-                        if (hit.collider.GetComponent<EnemyScript>())
+						ApplyDamageToEnemy(hit.collider, Time.deltaTime * configFile.Damage);
+                        /*if (hit.collider.GetComponent<EnemyScript>())
                         {
                             hit.collider.GetComponent<EnemyScript>().Damage(Time.deltaTime * configFile.Damage);
-                        }
+                        }*/
                     }
                     else {
                         laserBeam.SetPosition(1, context.userTrans.position + context.targetVector.normalized * configFile.Range);

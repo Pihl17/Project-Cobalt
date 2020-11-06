@@ -7,7 +7,7 @@ public class CharacterScript : MonoBehaviour
 {
     
 	//Stats
-	float moveSpeed = 2.5f;
+	float moveSpeed = 1.5f;
 	protected float health = 10;
 	protected float maxShield = 4;
 	protected float shield = 0;

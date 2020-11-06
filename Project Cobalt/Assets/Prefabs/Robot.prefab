@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1158348850208929138}
   - component: {fileID: 1158348850208929139}
   - component: {fileID: 1158348850208929143}
+  - component: {fileID: 2579938231337682655}
   - component: {fileID: 1158348850208929145}
   m_Layer: 0
   m_Name: Robot
@@ -112,8 +113,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turningPart: {fileID: 1158348850263597887}
+  gunLocation: {x: 0, y: 1.21, z: 1.16}
+  launcherLocation: {x: 0, y: 2.06, z: 0}
   healthText: {fileID: 0}
   shieldText: {fileID: 0}
+--- !u!114 &2579938231337682655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158348850208929136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b499f95bb4cdc114280467a214d706bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &1158348850208929145
 Rigidbody:
   m_ObjectHideFlags: 0

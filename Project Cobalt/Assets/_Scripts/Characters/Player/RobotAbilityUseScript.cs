@@ -9,11 +9,16 @@ public class RobotAbilityUseScript : RobotCharacterScript
     
 	protected Ability[] ability = new Ability[2];
 
+	[SerializeField] Vector3 gunLocation = new Vector3(0, 0, 0);
+	public Vector3 GunLocation { get { return transform.TransformDirection(gunLocation); } }
+	[SerializeField] Vector3 launcherLocation = new Vector3(0, 0, 0);
+	public Vector3 LauncherLocation { get { return transform.TransformDirection(launcherLocation); } }
+
 	protected override void Initialization() {
 		base.Initialization();
 		ability[0] = new RapidFireShot();
 		//ability[1] = new ChargableBlast();
-		ability[1] = new RechargableShield();
+		ability[1] = new MortarStrike();
 	}
 
 
