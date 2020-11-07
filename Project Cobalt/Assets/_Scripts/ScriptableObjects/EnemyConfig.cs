@@ -12,8 +12,10 @@ public class EnemyConfig : ScriptableObject
 	[SerializeField] float awarenessRadius = 10;
 	public float AwarenessRadius { get{ return awarenessRadius; } }
 
-	/*void STOP_THIS_NONSENSE() {
-		maxHealth = 0;
-	}*/
+	[SerializeField] float damage = 1;
+	public float Damage { get { return damage; } }
+
+	[SerializeField] float attackRange = 10;
+	public float AttackRange { get { return attackRange; } }
 
 }

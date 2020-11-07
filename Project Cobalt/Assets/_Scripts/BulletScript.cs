@@ -9,29 +9,27 @@ public class BulletScript : MonoBehaviour
 
 	float timer = 0;
 	protected float timeAlive = 3;
-	protected float speed = 10;
 	protected float damage = 2;
 
 	protected Rigidbody rig;
+
+	public void Fire(Vector3 velocity, float _damage) {
+		Initialization();
+		damage = _damage;
+		rig.velocity = velocity;
+	}
 
 	protected virtual void Initialization() {
 		rig = GetComponent<Rigidbody>();
 	}
 
-	// Start is called before the first frame update
-    void Start()
-    {
-		Initialization();
-		rig.AddForce(transform.forward * speed, ForceMode.VelocityChange);
-    }
-
     // Update is called once per frame
     void Update()
     {
-		checkForSelfDestruct();
+		CheckForSelfDestruct();
     }
 
-	protected void checkForSelfDestruct() {
+	protected void CheckForSelfDestruct() {
 		timer += Time.deltaTime;
 		if (timer > timeAlive)
 			GameObject.Destroy(gameObject);

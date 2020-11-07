@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyScript : DestructableScript
 {
-	public PlayerControlScript playerScript;
+	PlayerControlScript playerScript;
 	protected Transform target;
 	bool awareOfPlayer = false;
-	//public float awarenessRadius = 10;
+	
 
 	protected override void Initialization() {
 		base.Initialization();
@@ -26,11 +26,6 @@ public class EnemyScript : DestructableScript
 	}
 
 
-	void OnDrawGizmosSelected() {
-		if (configFile) {
-			Gizmos.color = Color.red;
-			Gizmos.DrawWireSphere(transform.position, configFile.AwarenessRadius);
-		}
-	}
+	
 
 }

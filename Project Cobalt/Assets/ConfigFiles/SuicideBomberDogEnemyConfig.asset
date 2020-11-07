@@ -10,6 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66e487da4478f70488fbb03ff4d4fb43, type: 3}
-  m_Name: WalkableEnemyConfig
+  m_Name: SuicideBomberDogEnemyConfig
   m_EditorClassIdentifier: 
   maxHealth: 4
+  awarenessRadius: 10
+  damage: 4
+  attackRange: 2

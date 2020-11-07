@@ -11,7 +11,6 @@ public class DestructableScript : MonoBehaviour
 
 	public delegate void DestroyedEvent();
 	public DestroyedEvent OnDestroy;
-	//public UnityEvent OnDestroyEvent;
 
 	protected virtual void Initialization() {
 		health = configFile.MaxHealth;
@@ -23,13 +22,15 @@ public class DestructableScript : MonoBehaviour
 	}
 
 	public void Damage(float amount) {
-		//print("Enemy received " + amount + " points of damage!");
 		health -= amount;
 		if (health <= 0) {
-			//OnDestroyEvent.Invoke();
-			if (OnDestroy != null)
-				OnDestroy();
+			Die();
 		}
+	}
+
+	protected void Die() {
+		if (OnDestroy != null)
+			OnDestroy();
 	}
 
 	protected virtual void Destroy() {

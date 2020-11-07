@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
-public class WalkableEnemyScript : EnemyScript
+public abstract class WalkableEnemyScript : EnemyScript
 {
 
-	UnityEngine.AI.NavMeshAgent agent;
+	protected UnityEngine.AI.NavMeshAgent agent;
 
 	protected override void Initialization() {
 		base.Initialization();
@@ -23,16 +23,13 @@ public class WalkableEnemyScript : EnemyScript
     void Update()
     {
 		if (AwareOfPlayer())
-			agent.destination = target.position;
-    }
-
-
-	public void OnCollisionEnter(Collision col) {
-		if (col.gameObject.GetComponent<RobotScript>()) {
-			col.gameObject.GetComponent<RobotScript>().Damage(1);
-			GameObject.Destroy(gameObject);
-		}
+			Move();
 	}
+
+	protected abstract void Move();
+
+
+	
 
 
 }

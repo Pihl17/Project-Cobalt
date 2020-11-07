@@ -16,6 +16,8 @@ public class PlayerControlScript : PlayerGUIDisplayerScript
 	PlayerInput playerIn;
 	Vector2 moveInput;
 	Vector2 faceInput;
+	float rotationInput;
+	float rotateSpeed = 45f;
 
 
 	Vector3 cameraOffset = new Vector3(0, 10, -6);
@@ -66,9 +68,12 @@ public class PlayerControlScript : PlayerGUIDisplayerScript
 		currentRobot.Move(currentRobot.transform.TransformDirection(new Vector3(moveInput.x, 0, moveInput.y)));
 	}
 
+	
 	void TurnRobot() {
-		faceInput = playerIn.actions.FindAction("LookDelta").ReadValue<Vector2>();
-		currentRobot.transform.Rotate(Vector3.up * faceInput.x*0.2f);
+		/*faceInput = playerIn.actions.FindAction("LookDelta").ReadValue<Vector2>();
+		currentRobot.transform.Rotate(Vector3.up * faceInput.x*0.2f);*/
+		rotationInput = playerIn.actions.FindAction("Rotate").ReadValue<float>();
+		currentRobot.transform.Rotate(Vector3.up * rotationInput * rotateSpeed * Time.deltaTime);
 	}
 
 	void TurnCamera() {
