@@ -15,6 +15,8 @@ public class MortarBulletScript : BulletScript
 	protected override void Initialization() {
 		base.Initialization();
 		timeAlive = 10;
+		OnImpact -= DamageCollision;
+		OnImpact += Explode;
 	}
 
     // Update is called once per frame
@@ -22,8 +24,8 @@ public class MortarBulletScript : BulletScript
     {
 		CheckForSelfDestruct();
     }
-		
-	public override void OnCollisionEnter(Collision col) {
+
+	void Explode(Collision collision) {
 		/*Debug.DrawRay(transform.position, Vector3.right * explodeRadius, Color.red, 2.0f);
 		Debug.DrawRay(transform.position, -Vector3.right * explodeRadius, Color.red, 2.0f);
 		Debug.DrawRay(transform.position, Vector3.forward * explodeRadius, Color.red, 2.0f);
@@ -37,6 +39,5 @@ public class MortarBulletScript : BulletScript
 		}
 		GameObject.Destroy(gameObject);
 	}
-
 
 }

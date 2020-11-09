@@ -33,7 +33,7 @@ namespace Abilities {
 					firePos = context.userTrans.position + context.userScript.GunLocation;
 					
 					//Debug.DrawLine(firePos, firePos + context.targetVector.normalized*configFile.Range, Color.red, 1.0f);
-					Debug.DrawRay(firePos, (context.targetVector - context.userScript.GunLocation).normalized * configFile.Range, Color.red, 1.0f);
+					//Debug.DrawRay(firePos, (context.targetVector - context.userScript.GunLocation).normalized * configFile.Range, Color.red, 1.0f);
 					muzzleFlashEffect.transform.position = firePos;
 					muzzleFlashEffect.transform.LookAt(firePos + context.targetVector.normalized);
 					muzzleFlashEffect.Play();

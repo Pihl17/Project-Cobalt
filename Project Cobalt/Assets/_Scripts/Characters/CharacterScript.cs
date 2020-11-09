@@ -7,7 +7,7 @@ public class CharacterScript : MonoBehaviour
 {
     
 	//Stats
-	float moveSpeed = 1.5f;
+	[SerializeField] float moveSpeed = 2.5f;
 	protected float health = 10;
 	protected float maxShield = 4;
 	protected float shield = 0;
@@ -19,10 +19,14 @@ public class CharacterScript : MonoBehaviour
 		rig = GetComponent<Rigidbody>();
 	}
 
-	public void Move(Vector3 moveDirection) {
-		rig.AddForce(moveDirection * moveSpeed, ForceMode.VelocityChange);
+	void FixedUpdate() {
 		if (rig.velocity.magnitude > moveSpeed) // TODO: This part about keeping a max speed causes the character to fall slowly as long as they are moving... Need to keep the y coordinate out of it somehow...
 			rig.velocity = rig.velocity.normalized * moveSpeed;
+	}
+
+	public void Move(Vector3 moveDirection) {
+		rig.AddForce(moveDirection * moveSpeed, ForceMode.VelocityChange);
+		//rig.velocity = moveDirection * moveSpeed;
 	}
 
 	public virtual void Damage(float amount) {

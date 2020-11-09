@@ -14,15 +14,17 @@ public class PlayerControlScript : PlayerGUIDisplayerScript
 
 	// Player input and output variables
 	PlayerInput playerIn;
+	bool movementFlag = false;
 	Vector2 moveInput;
 	Vector2 faceInput;
 	float rotationInput;
 	float rotateSpeed = 45f;
 
 
-	Vector3 cameraOffset = new Vector3(0, 10, -6);
-	float camFollowSpeed = 8;
-	float camTurnSpeed = 90;
+	Vector3 cameraOffset = new Vector3(0, 10, -5);
+	float camFollowSpeed = 4.8f;
+	float camTurnTime = 0.5f;
+	float curCamTurnSpeed = 0.0f;
 	Vector3 camNextPos;
 	Vector3 camNextRot;
 
@@ -32,6 +34,10 @@ public class PlayerControlScript : PlayerGUIDisplayerScript
     {
 		playerIn = GetComponent<PlayerInput>();
 		SwitchToInGameUI(false);
+		playerIn.actions.FindAction("Move").performed += FlagRobotMovement;
+		playerIn.actions.FindAction("Move").canceled += FlagRobotMovement;
+
+		camNextPos = currentRobot.transform.position;
 
 		PlayerStats.abilityInv.Add(new LaserGun());
 		PlayerStats.abilityInv.Add(new RapidFireShot());
@@ -45,7 +51,6 @@ public class PlayerControlScript : PlayerGUIDisplayerScript
     void Update()
     {
 		if (playerIn.actions.FindActionMap("Robot").enabled) {
-			MoveRobot();
 			TurnRobot();
 
 			currentRobot.UpdateAbilityCooldowns();
@@ -59,29 +64,41 @@ public class PlayerControlScript : PlayerGUIDisplayerScript
 
     }
 
+	void FixedUpdate() {
+		if (playerIn.actions.FindActionMap("Robot").enabled) {
+			if (movementFlag)
+				MoveRobot();
+		}
+	}
+
 	void LateUpdate() {
 		TurnCamera();
 	}
 
+	
 	void MoveRobot() {
 		moveInput = playerIn.actions.FindAction("Move").ReadValue<Vector2>();
 		currentRobot.Move(currentRobot.transform.TransformDirection(new Vector3(moveInput.x, 0, moveInput.y)));
 	}
 
 	
+	void FlagRobotMovement(InputAction.CallbackContext context) {
+		movementFlag = context.phase == InputActionPhase.Performed;
+	}
+
+
 	void TurnRobot() {
-		/*faceInput = playerIn.actions.FindAction("LookDelta").ReadValue<Vector2>();
-		currentRobot.transform.Rotate(Vector3.up * faceInput.x*0.2f);*/
 		rotationInput = playerIn.actions.FindAction("Rotate").ReadValue<float>();
 		currentRobot.transform.Rotate(Vector3.up * rotationInput * rotateSpeed * Time.deltaTime);
 	}
 
 	void TurnCamera() {
-		camNextPos = currentRobot.transform.position + Vector3.up * cameraOffset.y + Vector3.right * cameraOffset.z * Mathf.Sin(currentRobot.transform.eulerAngles.y * Mathf.Deg2Rad) + Vector3.forward * cameraOffset.z * Mathf.Cos(currentRobot.transform.eulerAngles.y * Mathf.Deg2Rad);
 		camNextRot = new Vector3(Camera.main.transform.eulerAngles.x, currentRobot.transform.eulerAngles.y, Camera.main.transform.eulerAngles.z);
-		Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, camNextPos, Time.deltaTime * camFollowSpeed);
-		camNextRot.y = Mathf.LerpAngle(Camera.main.transform.eulerAngles.y, camNextRot.y, Time.deltaTime * camTurnSpeed);
+		camNextRot.y = Mathf.SmoothDampAngle(Camera.main.transform.eulerAngles.y, camNextRot.y, ref curCamTurnSpeed, camTurnTime);
 		Camera.main.transform.eulerAngles = camNextRot;
+
+		camNextPos = Vector3.MoveTowards(camNextPos, currentRobot.transform.position, camFollowSpeed * Time.deltaTime);
+		Camera.main.transform.position = camNextPos + Vector3.up * cameraOffset.y + Vector3.right * cameraOffset.z * Mathf.Sin(Camera.main.transform.eulerAngles.y * Mathf.Deg2Rad) + Vector3.forward * cameraOffset.z * Mathf.Cos(Camera.main.transform.eulerAngles.y * Mathf.Deg2Rad);
 	}
 
 	public void UseAbility0(InputAction.CallbackContext context) {

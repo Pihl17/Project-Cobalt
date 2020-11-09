@@ -13,6 +13,10 @@ public class BulletScript : MonoBehaviour
 
 	protected Rigidbody rig;
 
+	public delegate void ImpactEvent(Collision collision);
+	public event ImpactEvent OnImpact;
+
+
 	public void Fire(Vector3 velocity, float _damage) {
 		Initialization();
 		damage = _damage;
@@ -21,6 +25,7 @@ public class BulletScript : MonoBehaviour
 
 	protected virtual void Initialization() {
 		rig = GetComponent<Rigidbody>();
+		OnImpact += DamageCollision;
 	}
 
     // Update is called once per frame
@@ -37,8 +42,9 @@ public class BulletScript : MonoBehaviour
 
 
 	public virtual void OnCollisionEnter(Collision col) {
-		if (DamageCollision(col.collider))
-			GameObject.Destroy(gameObject);
+		if (OnImpact != null)
+			OnImpact.Invoke(col);
+		GameObject.Destroy(gameObject);
 	}
 
 	protected bool DamageCollision(Collider col) {
@@ -51,5 +57,10 @@ public class BulletScript : MonoBehaviour
 		}
 		return false;
 	}
+
+	protected void DamageCollision(Collision col) {
+		DamageCollision(col.collider);
+	}
+
 
 }

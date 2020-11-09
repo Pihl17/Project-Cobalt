@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e595c63d742dd41a6f557065b19920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 2.5
   turningPart: {fileID: 1158348850263597887}
   gunLocation: {x: 0, y: 1.21, z: 1.16}
   launcherLocation: {x: 0, y: 2.06, z: 0}
