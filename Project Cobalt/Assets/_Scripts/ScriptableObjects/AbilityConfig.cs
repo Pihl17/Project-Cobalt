@@ -8,7 +8,7 @@ namespace Abilities
 
     public enum ValueName { None, ExplosionRadius, MinCurvatureHeight, ChargeTime, DamageMultiplier, RangeMultiplier }
 
-    [CreateAssetMenu(fileName = "AbilityConfig", menuName = "ScriptableObject/AbilityConfig", order = 2)]
+    [CreateAssetMenu(fileName = "AbilityConfig", menuName = "ScriptableObject/AbilityConfig", order = 4)]
     public class AbilityConfig : ScriptableObject//, ISerializationCallbackReceiver
     {
         [Header("Common Variables")]

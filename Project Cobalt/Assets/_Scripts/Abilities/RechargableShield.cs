@@ -8,7 +8,7 @@ namespace Abilities {
 	public class RechargableShield : Ability
 	{
 
-		int chargeAmount = 4;
+		//int chargeAmount = 4;
 
 		public RechargableShield() {
             configFile = Resources.Load<AbilityConfig>("AbilityConfigs/RechargableShieldConfig");
@@ -18,7 +18,7 @@ namespace Abilities {
 			if (ReadyToUse()) {
 				if (context.triggerPhase == InputActionPhase.Canceled) {
 
-					context.userScript.GainShield(chargeAmount);
+					//context.userScript.GainShield(chargeAmount);
 					cooldownTimer = 0;
 				}
 			}

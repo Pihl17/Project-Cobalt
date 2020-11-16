@@ -24,15 +24,15 @@ public class AbilityChoiceMenuOption : MenuOption
 	}
 
 	void ChangeAbility(bool positiveDir) {
-		RobotScript robot = GameObject.Find("PlayerController").GetComponent<PlayerControlScript>().currentRobot;
+		/*RobotScript robot = GameObject.Find("PlayerController").GetComponent<PlayerControlScript>().currentRobot;
 		robot.SwitchAbility(abilityNumber, PlayerStats.ReplaceAbility(positiveDir ? 0 : (PlayerStats.abilityInv.Count-1), robot.GetAbility(abilityNumber)));
 		PlayerStats.RotateAbilityInv(!positiveDir);
-		UpdateAbilityDisplay();
+		UpdateAbilityDisplay();*/
 	}
 
 	void UpdateAbilityDisplay() {
-		if (text)
-			text.text = GameObject.Find("PlayerController").GetComponent<PlayerControlScript>().currentRobot.GetAbility(abilityNumber).GetName();
+		/*if (text)
+			text.text = GameObject.Find("PlayerController").GetComponent<PlayerControlScript>().currentRobot.GetAbility(abilityNumber).GetName();*/
 	}
 
 	public override void Select() {

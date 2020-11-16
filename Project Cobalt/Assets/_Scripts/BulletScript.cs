@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [RequireComponent(typeof(Rigidbody))]
 public class BulletScript : MonoBehaviour
 {
@@ -48,11 +49,11 @@ public class BulletScript : MonoBehaviour
 	}
 
 	protected bool DamageCollision(Collider col) {
-		if (enemyBullet && col.gameObject.GetComponent<RobotScript>()) {
-			col.gameObject.GetComponent<RobotScript>().Damage(damage);
+		if (enemyBullet && col.gameObject.GetComponent<PlayerMechControllerScript>()) {
+			col.gameObject.GetComponent<PlayerMechControllerScript>().Damage(damage);
 			return true;
-		} else if (!enemyBullet && col.gameObject.GetComponent<DestructableScript>()) {
-			col.gameObject.GetComponent<DestructableScript>().Damage(damage);
+		} else if (!enemyBullet && col.gameObject.GetComponent<IDamageable>() != null && !col.gameObject.GetComponent<PlayerMechControllerScript>()) {
+			col.gameObject.GetComponent<IDamageable>().Damage(damage);
 			return true;
 		}
 		return false;

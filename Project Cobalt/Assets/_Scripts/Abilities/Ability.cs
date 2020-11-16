@@ -33,11 +33,10 @@ namespace Abilities {
 		}
 
 		public static void ApplyDamageToEnemy(Collider collider, float amount) {
-			if (collider.GetComponent<DestructableScript>()) {
-				collider.GetComponent<DestructableScript>().Damage(amount);
+			if (collider.GetComponent<IDamageable>() != null) {
+				collider.GetComponent<IDamageable>().Damage(amount);
 			}
 		}
-
 
 	}
 
@@ -46,9 +45,9 @@ namespace Abilities {
 		public InputActionPhase triggerPhase;
 		public Transform userTrans;
 		public Vector3 targetVector;
-		public RobotAbilityUseScript userScript;
+		public MechWeaponSystemScript userScript;
 
-		public AbilityContext(InputActionPhase _triggerPhase, Transform _userTrans, Vector3 _targetVector, RobotAbilityUseScript _userScript) {
+		public AbilityContext(InputActionPhase _triggerPhase, Transform _userTrans, Vector3 _targetVector, MechWeaponSystemScript _userScript) {
 			triggerPhase = _triggerPhase;
 			userTrans = _userTrans;
 			targetVector = _targetVector;

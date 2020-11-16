@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 235951433670150529}
   - component: {fileID: 235951433670150528}
   - component: {fileID: 235951433670150541}
-  - component: {fileID: 4127395714474104111}
-  - component: {fileID: 4259462003876999306}
-  - component: {fileID: 9124479135673540687}
+  - component: {fileID: 3011121714215615166}
+  - component: {fileID: 3800657664962690302}
+  - component: {fileID: 6609084743165170248}
   m_Layer: 0
   m_Name: SuicideBomberDogEnemy
   m_TagString: Untagged
@@ -123,7 +123,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4127395714474104111
+--- !u!114 &3011121714215615166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,11 +132,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 235951433670150531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 844b50d473624784f8686a66d7f1a102, type: 3}
+  m_Script: {fileID: 11500000, guid: 45775f86ad3854f4d94ddc00ec7ecde4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   configFile: {fileID: 11400000, guid: e0589f82708b03646b3cdb08c5dd78c3, type: 2}
---- !u!114 &4259462003876999306
+--- !u!114 &3800657664962690302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,10 +145,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 235951433670150531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cca4d08c1ad2b64428c81761f0e2d153, type: 3}
+  m_Script: {fileID: 11500000, guid: 85d34263ff8d8794cb73c14fa70ca2cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9124479135673540687
+--- !u!114 &6609084743165170248
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 235951433670150531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e65fc290a7153c64eb3057aae4402882, type: 3}
+  m_Script: {fileID: 11500000, guid: bd62203a94d021844927a86a9bddf142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3614667696523198398
@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1331989798456234498}
-  - component: {fileID: 6931499013308270551}
+  - component: {fileID: 3939387178942577257}
   - component: {fileID: 3627565003946318572}
   - component: {fileID: 3317569174459264767}
   m_Layer: 0
@@ -194,7 +194,7 @@ Transform:
   m_Father: {fileID: 235951433670150543}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6931499013308270551
+--- !u!114 &3939387178942577257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3614667696523198398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48f8c1f763aaf5747b0029c83f92d1c1, type: 3}
+  m_Script: {fileID: 11500000, guid: 806b83e125057f944908b441b0c09e05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!198 &3627565003946318572
