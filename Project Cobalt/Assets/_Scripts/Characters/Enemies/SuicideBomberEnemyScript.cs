@@ -24,8 +24,8 @@ public class SuicideBomberEnemyScript : MovableEnemyScript
 		OnDestroy -= Explode;
 		Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, configFile.AttackRange);
 		for (int i = 0; i < nearbyObjects.Length; i++) {
-			if (nearbyObjects[i].GetComponent<DestructibleScript<DestructibleConfig>>())
-				nearbyObjects[i].GetComponent<DestructibleScript<DestructibleConfig>>().Damage(configFile.Damage);
+			if (nearbyObjects[i].GetComponent<IDestructible>() != null)
+				nearbyObjects[i].GetComponent<IDestructible>().Damage(configFile.Damage);
 		}
 	}
 
@@ -34,6 +34,5 @@ public class SuicideBomberEnemyScript : MovableEnemyScript
 			Die();
 		}
 	}
-
 
 }

@@ -3,21 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class MechSystemScript : CharacterScript<PlayerConfig> {
+public class MechSystemScript : MonoBehaviour, IDestructible {
 
-
+	public MechConfig configFile;
+	float health;
 	protected Rigidbody rig;
 	protected Transform lockOnTarget;
 
 	float rotateSpeed = 45f;
 
-	protected override void Initialisation() {
-		base.Initialisation();
+	public event DamagedEvent OnDamaged;
+	public event DestroyedEvent OnDestroy;
+
+	protected virtual void Initialisation() {
 		rig = GetComponent<Rigidbody>();
+		health = configFile.MaxHealth;
+	}
+
+	void Start() {
+		Initialisation();
 	}
 
 	void FixedUpdate() {
 		
+	}
+
+	public void Damage(float amount) {
+		health = Mathf.Clamp(health - amount, 0, configFile.MaxHealth);
+		if (OnDamaged != null)
+			OnDamaged.Invoke(health, amount);
+		if (health <= 0)
+			Destroy();
+	}
+
+	protected virtual void Destroy() {
+		if (OnDestroy != null)
+			OnDestroy.Invoke();
 	}
 
 	protected void Move(Vector3 moveDirection) {
@@ -41,7 +62,7 @@ public class MechSystemScript : CharacterScript<PlayerConfig> {
 		float tempAngle;
 		float tempMinAngle = 90;
 		for (int i = 0; i < possibleTargets.Length; i++) {
-			if (possibleTargets[i].GetComponent<IDamageable>() != null && (possibleTargets[i].transform.position - transform.position).magnitude <= configFile.LockOnDistrance) {
+			if (possibleTargets[i].GetComponent<IDestructible>() != null && (possibleTargets[i].transform.position - transform.position).magnitude <= configFile.LockOnDistrance) {
 				tempAngle = Vector3.Angle(transform.forward, possibleTargets[i].transform.position - transform.position);
 				if (tempAngle < tempMinAngle) {
 					lockOnTarget = possibleTargets[i].transform;

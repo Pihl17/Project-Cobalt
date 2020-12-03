@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace Abilities
-{
+namespace Abilities {
 
     public enum ValueName { None, ExplosionRadius, MinCurvatureHeight, ChargeTime, DamageMultiplier, RangeMultiplier }
 
     [CreateAssetMenu(fileName = "AbilityConfig", menuName = "ScriptableObject/AbilityConfig", order = 4)]
-    public class AbilityConfig : ScriptableObject//, ISerializationCallbackReceiver
+    public class AbilityConfig : ScriptableObject
     {
         [Header("Common Variables")]
         [SerializeField] string abilityName = "Unnamed";
@@ -39,45 +38,8 @@ namespace Abilities
         [SerializeField] DamageTime damageTime = DamageTime.PerHit;
         public DamageTime GetDamageTime { get { return damageTime; } }
 
-
-
-
-
-
-        /*[Serializable]
-        struct CustomKVP<T> {
-            public string key;
-            public T value;
-            public CustomKVP(string _key, T _value) {
-                key = _key;
-                value = _value;
-            }
-        }
-        [SerializeField] List<CustomKVP<float>> customFloatValues = new List<CustomKVP<float>>();
-
-        public void OnAfterDeserialize() {
-            floatValue = new Dictionary<string, float>();
-            for (int i = 0; i < customFloatValues.Count; i++)
-            {
-                string keyName = customFloatValues[i].key;
-                while (floatValue.ContainsKey(keyName)) {
-                    keyName = keyName + " copy";
-                }
-                floatValue.Add(keyName, customFloatValues[i].value);
-            }
-        }
-
-        public void OnBeforeSerialize() {
-            customFloatValues.Clear();
-            foreach (var kvp in floatValue) {
-                customFloatValues.Add(new CustomKVP<float>(kvp.Key, kvp.Value));
-            }
-        }*/
-
-
-
-
     }
+
 
     [Serializable]
     public struct CustomKVP<T, V>

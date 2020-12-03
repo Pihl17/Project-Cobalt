@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IDamageable
+public class MechScript : MonoBehaviour
 {
-	void Damage(float amount);
+    
 }

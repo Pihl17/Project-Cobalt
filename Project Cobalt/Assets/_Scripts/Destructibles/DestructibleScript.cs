@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class DestructibleScript<T> : MonoBehaviour, IDamageable, IDestructible where T : DestructibleConfig 
-{
+public class DestructibleScript : MonoBehaviour, IDestructible {
 
-	public T configFile;
+	public DestructibleConfig configFile;
 	float health = 10;
 
 	public event DamagedEvent OnDamaged;

@@ -8,7 +8,6 @@ public class PlayerMechControllerScript : MechWeaponSystemScript {
 
 	// Player input and output variables
 	PlayerInput playerIn;
-	//bool movementFlag = false;
 	Vector2 moveInput;
 	Vector2 faceInput;
 

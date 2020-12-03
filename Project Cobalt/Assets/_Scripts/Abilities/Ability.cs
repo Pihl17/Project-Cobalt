@@ -33,8 +33,8 @@ namespace Abilities {
 		}
 
 		public static void ApplyDamageToEnemy(Collider collider, float amount) {
-			if (collider.GetComponent<IDamageable>() != null) {
-				collider.GetComponent<IDamageable>().Damage(amount);
+			if (collider.GetComponent<IDestructible>() != null) {
+				collider.GetComponent<IDestructible>().Damage(amount);
 			}
 		}
 

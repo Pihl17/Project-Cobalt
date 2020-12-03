@@ -52,8 +52,8 @@ public class BulletScript : MonoBehaviour
 		if (enemyBullet && col.gameObject.GetComponent<PlayerMechControllerScript>()) {
 			col.gameObject.GetComponent<PlayerMechControllerScript>().Damage(damage);
 			return true;
-		} else if (!enemyBullet && col.gameObject.GetComponent<IDamageable>() != null && !col.gameObject.GetComponent<PlayerMechControllerScript>()) {
-			col.gameObject.GetComponent<IDamageable>().Damage(damage);
+		} else if (!enemyBullet && col.gameObject.GetComponent<IDestructible>() != null && !col.gameObject.GetComponent<PlayerMechControllerScript>()) {
+			col.gameObject.GetComponent<IDestructible>().Damage(damage);
 			return true;
 		}
 		return false;

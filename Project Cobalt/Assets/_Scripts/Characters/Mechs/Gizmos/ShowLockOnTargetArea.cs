@@ -10,7 +10,9 @@ public class ShowLockOnTargetArea : MonoBehaviour
 	private void OnDrawGizmosSelected() {
 		if (!script)
 			script = GetComponent<MechSystemScript>();
-		Gizmos.color = Color.green;
-		Gizmos.DrawWireCube(transform.position + transform.forward * (script.configFile.LockOnDistrance / 2 + 1f), Vector3.one * script.configFile.LockOnDistrance);
+		if (script.configFile) {
+			Gizmos.color = Color.green;
+			Gizmos.DrawWireCube(transform.position + transform.forward * (script.configFile.LockOnDistrance / 2 + 1f), Vector3.one * script.configFile.LockOnDistrance);
+		}
 	}
 }

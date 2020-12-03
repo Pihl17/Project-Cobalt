@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemyConfig", menuName = "ScriptableObject/EnemyConfig", order = 2)]
-public class EnemyConfig : CharacterConfig {
+public class EnemyConfig : ScriptableObject {
+	
+	[SerializeField] float maxHealth = 10;
+	public float MaxHealth { get { return maxHealth; } }
+
+	[SerializeField] float moveSpeed = 5;
+	public float MoveSpeed { get { return moveSpeed; } }
 
 	[SerializeField] float awarenessRadius = 10;
 	public float AwarenessRadius { get{ return awarenessRadius; } }

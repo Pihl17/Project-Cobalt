@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestructibleObjectScript : DestructibleScript<DestructibleConfig> {
+public class DestructibleObjectScript : DestructibleScript {
 
 }
