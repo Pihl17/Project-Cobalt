@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using Abilities;
+using Weapons;
 
-[CustomEditor(typeof(AbilityConfig))]
+[CustomEditor(typeof(WeaponConfig))]
 //[CanEditMultipleObjects]
-public class AbilityConfigEditor : Editor
+public class WeaponConfigEditor : Editor
 {
 
     //SerializedObject abilityConfig;
     //SerializedProperty floatValue;
-    AbilityConfig script;
+    WeaponConfig script;
 
     private void OnEnable()
     {
@@ -24,7 +24,7 @@ public class AbilityConfigEditor : Editor
         base.OnInspectorGUI();
         //DrawDefaultInspector();
         //serializedObject.Update();
-        script = (AbilityConfig)target;
+        script = (WeaponConfig)target;
 		Undo.RecordObject(script,"Changes to values");
 
 

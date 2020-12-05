@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Abilities {
+namespace Weapons {
 
-	public class ChargableBlast : Ability
+	public class ChargableBlast : Weapon
 	{
     
 		bool charging;
@@ -16,14 +16,14 @@ namespace Abilities {
         Material blastVisual;
 
 		public ChargableBlast() {
-            configFile = Resources.Load<AbilityConfig>("AbilityConfigs/ChargableBlastConfig");
+            configFile = Resources.Load<WeaponConfig>("WeaponConfigs/ChargableBlastConfig");
         }
 
         float GetChargeLevel() {
             return Mathf.Clamp((Time.time - chargeStart) / configFile.FloatValue[ValueName.ChargeTime], 0, 1);
         }
 
-		public override void Use(AbilityContext context) {
+		public override void Fire(WeaponFireContext context) {
             if (!blastVisual)
             {
                 GameObject blastVisualObject = GameObject.Instantiate(configFile.InstantiatableObjects[0], context.userTrans.position + context.userTrans.forward * (0.6f + configFile.Range * configFile.FloatValue[ValueName.RangeMultiplier]), context.userTrans.rotation, context.userTrans);

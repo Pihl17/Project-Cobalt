@@ -15,8 +15,6 @@ GameObject:
   - component: {fileID: 1158348850208929145}
   - component: {fileID: 7966942116009393928}
   - component: {fileID: 1300670985086229935}
-  - component: {fileID: 2564600408995918218}
-  - component: {fileID: 6252702477319320744}
   m_Layer: 0
   m_Name: PlayerMech
   m_TagString: Untagged
@@ -160,33 +158,9 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Robot
+  m_DefaultActionMap: Mech
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &2564600408995918218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158348850208929136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a1fd3661c8f49948a6e78a19af2c04e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6252702477319320744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158348850208929136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f1cb860359bbe4e8594562f9a6d6e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1158348850263597884
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,15 +20,15 @@ public class PlayerMechControllerScript : MechWeaponSystemScript {
 		base.Initialisation();
 		playerIn = GetComponent<PlayerInput>();
 
-		playerIn.actions.FindAction("Ability0").performed += UseAbility0;
-		playerIn.actions.FindAction("Ability0").canceled += UseAbility0;
-		playerIn.actions.FindAction("Ability1").performed += UseAbility1;
-		playerIn.actions.FindAction("Ability1").canceled += UseAbility1;
+		playerIn.actions.FindAction("PrimaryFire").performed += UseAbility0;
+		playerIn.actions.FindAction("PrimaryFire").canceled += UseAbility0;
+		playerIn.actions.FindAction("SecondaryFire").performed += UseAbility1;
+		playerIn.actions.FindAction("SecondaryFire").canceled += UseAbility1;
 
-		PlayerStats.abilityInv.Add(new Abilities.LaserGun());
-		PlayerStats.abilityInv.Add(new Abilities.RapidFireShot());
-		PlayerStats.abilityInv.Add(new Abilities.RechargableShield());
-		PlayerStats.abilityInv.Add(new Abilities.ChargableBlast());
+		PlayerStats.abilityInv.Add(new Weapons.LaserGun());
+		PlayerStats.abilityInv.Add(new Weapons.RapidFireShot());
+		PlayerStats.abilityInv.Add(new Weapons.RechargableShield());
+		PlayerStats.abilityInv.Add(new Weapons.ChargableBlast());
 	}
 
 	void Update() {

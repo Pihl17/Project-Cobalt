@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Abilities {
+namespace Weapons {
 
-	public abstract class Ability
+	public abstract class Weapon
 	{
 
-        protected AbilityConfig configFile;
+        protected WeaponConfig configFile;
+		public float Cooldown { get { return configFile.Cooldown; } }
 
 		protected float cooldownTimer;
 
+		//public Coroutine coroutine;
+		[HideInInspector] public bool triggerHeldDown;
 
-		public abstract void Use(AbilityContext context);
+		public abstract void Fire(WeaponFireContext context);
 
 
         public void UpdateCooldown() {
@@ -41,18 +44,19 @@ namespace Abilities {
 	}
 
 
-	public struct AbilityContext {
+	public struct WeaponFireContext {
 		public InputActionPhase triggerPhase;
 		public Transform userTrans;
 		public Vector3 targetVector;
-		public MechWeaponSystemScript userScript;
+		public MechConfig mechConfig;
 
-		public AbilityContext(InputActionPhase _triggerPhase, Transform _userTrans, Vector3 _targetVector, MechWeaponSystemScript _userScript) {
+		public Vector3 GunPosition { get { return userTrans.TransformDirection(mechConfig.GunLocation); } }
+
+		public WeaponFireContext(InputActionPhase _triggerPhase, Transform _userTrans, Vector3 _targetVector, MechConfig _mechConfig) {
 			triggerPhase = _triggerPhase;
 			userTrans = _userTrans;
 			targetVector = _targetVector;
-			//targetPos = _targetPos;
-			userScript = _userScript;
+			mechConfig = _mechConfig;
 		}
 
 	}

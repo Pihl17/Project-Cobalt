@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace Abilities {
+namespace Weapons {
 
     public enum ValueName { None, ExplosionRadius, MinCurvatureHeight, ChargeTime, DamageMultiplier, RangeMultiplier }
 
-    [CreateAssetMenu(fileName = "AbilityConfig", menuName = "ScriptableObject/AbilityConfig", order = 4)]
-    public class AbilityConfig : ScriptableObject
+    [CreateAssetMenu(fileName = "WeaponConfig", menuName = "ScriptableObject/WeaponConfig", order = 4)]
+    public class WeaponConfig : ScriptableObject
     {
         [Header("Common Variables")]
         [SerializeField] string abilityName = "Unnamed";

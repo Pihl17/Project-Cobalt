@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Abilities {
+namespace Weapons {
 
-	public class LaserGun : Ability
+	public class LaserGun : Weapon
 	{
 
 		//float damagePerSecond = 3;
@@ -14,10 +14,10 @@ namespace Abilities {
         LineRenderer laserBeam;
 
 		public LaserGun() {
-            configFile = Resources.Load<AbilityConfig>("AbilityConfigs/LaserGunConfig");
+            configFile = Resources.Load<WeaponConfig>("WeaponConfigs/LaserGunConfig");
         }
 
-        public override void Use(AbilityContext context) {
+        public override void Fire(WeaponFireContext context) {
             if (!laserBeam)
                 laserBeam = GameObject.Instantiate(configFile.InstantiatableObjects[0]).GetComponent<LineRenderer>();
             if (ReadyToUse()) {

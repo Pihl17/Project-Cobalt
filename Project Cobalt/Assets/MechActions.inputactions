@@ -1,8 +1,8 @@
 {
-    "name": "RobotActions",
+    "name": "MechActions",
     "maps": [
         {
-            "name": "Robot",
+            "name": "Mech",
             "id": "5a14ceff-69ab-47a8-8631-324c246fdfbd",
             "actions": [
                 {
@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Ability0",
+                    "name": "PrimaryFire",
                     "type": "Button",
                     "id": "54af3d80-ea37-413d-a460-986d1a6cf6e0",
                     "expectedControlType": "Button",
@@ -30,7 +30,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Ability1",
+                    "name": "SecondaryFire",
                     "type": "Button",
                     "id": "670df13f-a803-44c5-b57c-7bfdc5f2fe7c",
                     "expectedControlType": "Button",
@@ -38,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Ability2",
+                    "name": "SpecialFire",
                     "type": "Button",
                     "id": "6d06dfe7-f83b-4150-9467-ba01ce9b3498",
                     "expectedControlType": "Button",
@@ -54,7 +54,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Rotate",
+                    "name": "Turn",
                     "type": "Value",
                     "id": "909b2135-c2f2-497c-84b2-69f6f0bcaa9e",
                     "expectedControlType": "Axis",
@@ -235,7 +235,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Ability0",
+                    "action": "PrimaryFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -246,7 +246,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Ability0",
+                    "action": "PrimaryFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -257,7 +257,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Touch",
-                    "action": "Ability0",
+                    "action": "PrimaryFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -268,7 +268,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "Ability0",
+                    "action": "PrimaryFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -279,7 +279,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
-                    "action": "Ability0",
+                    "action": "PrimaryFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -290,7 +290,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Ability0",
+                    "action": "PrimaryFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -301,7 +301,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Ability1",
+                    "action": "SecondaryFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -312,7 +312,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Ability1",
+                    "action": "SecondaryFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -334,7 +334,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotate",
+                    "action": "Turn",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -345,7 +345,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Rotate",
+                    "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -356,7 +356,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Rotate",
+                    "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -367,7 +367,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Ability2",
+                    "action": "SpecialFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

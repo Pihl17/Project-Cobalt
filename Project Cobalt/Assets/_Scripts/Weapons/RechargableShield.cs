@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Abilities {
+namespace Weapons {
 
-	public class RechargableShield : Ability
+	public class RechargableShield : Weapon
 	{
 
 		//int chargeAmount = 4;
 
 		public RechargableShield() {
-            configFile = Resources.Load<AbilityConfig>("AbilityConfigs/RechargableShieldConfig");
+            configFile = Resources.Load<WeaponConfig>("WeaponConfigs/RechargableShieldConfig");
         }
 
-		public override void Use(AbilityContext context) {
+		public override void Fire(WeaponFireContext context) {
 			if (ReadyToUse()) {
 				if (context.triggerPhase == InputActionPhase.Canceled) {
 
