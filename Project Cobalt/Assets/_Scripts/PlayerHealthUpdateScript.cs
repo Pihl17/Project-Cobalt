@@ -21,16 +21,16 @@ public class PlayerHealthUpdateScript : MonoBehaviour
 	}
 
 	private void OnEnable() {
-		if (GameObject.Find("PlayerMech") && GameObject.Find("PlayerMech").GetComponent<PlayerMechControllerScript>()) {
-			GameObject.Find("PlayerMech").GetComponent<PlayerMechControllerScript>().OnDamaged += UpdateHealthText;
-			UpdateHealthText(GameObject.Find("PlayerMech").GetComponent<PlayerMechControllerScript>().configFile.MaxHealth, 0f);
+		if (GameObject.Find("PlayerMech") && GameObject.Find("PlayerMech").GetComponent<PlayerControlledMech>()) {
+			GameObject.Find("PlayerMech").GetComponent<PlayerControlledMech>().OnDamaged += UpdateHealthText;
+			UpdateHealthText(GameObject.Find("PlayerMech").GetComponent<PlayerControlledMech>().mechConfig.MaxHealth, 0f);
 		}
 	}
 
 	private void OnDisable() {
 		GameObject playerMech = GameObject.Find("PlayerMech");
-		if (playerMech && playerMech.GetComponent<PlayerMechControllerScript>())
-			playerMech.GetComponent<PlayerMechControllerScript>().OnDamaged -= UpdateHealthText;
+		if (playerMech && playerMech.GetComponent<PlayerControlledMech>())
+			playerMech.GetComponent<PlayerControlledMech>().OnDamaged -= UpdateHealthText;
 	}
 
 }

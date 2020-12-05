@@ -2,7 +2,4 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MechScript : MonoBehaviour
-{
-    
-}
+public enum Team { Neutral = -1, Blue, Red }

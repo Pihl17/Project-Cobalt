@@ -49,12 +49,8 @@ public class BulletScript : MonoBehaviour
 	}
 
 	protected bool DamageCollision(Collider col) {
-		if (enemyBullet && col.gameObject.GetComponent<PlayerMechControllerScript>()) {
-			col.gameObject.GetComponent<PlayerMechControllerScript>().Damage(damage);
-			return true;
-		} else if (!enemyBullet && col.gameObject.GetComponent<IDestructible>() != null && !col.gameObject.GetComponent<PlayerMechControllerScript>()) {
-			col.gameObject.GetComponent<IDestructible>().Damage(damage);
-			return true;
+		if (col.GetComponent<IDestructible>() != null) {
+			col.GetComponent<IDestructible>().Damage(damage);
 		}
 		return false;
 	}

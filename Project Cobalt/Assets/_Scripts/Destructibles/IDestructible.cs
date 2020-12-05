@@ -8,6 +8,7 @@ public interface IDestructible
 	event DestroyedEvent OnDestroy;
 
 	void Damage(float amount);
+	bool Targetable(Team othersTeam);
 
 }
 

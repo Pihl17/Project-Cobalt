@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour, IDestructible {
 
 	public EnemyConfig configFile;
-	PlayerMechControllerScript playerScript;
+	PlayerControlledMech playerScript;
 	protected Transform target;
 	bool awareOfPlayer = false;
 
@@ -24,7 +24,7 @@ public class EnemyScript : MonoBehaviour, IDestructible {
 	}
 
 	protected virtual void Initialisation() {
-		playerScript = GameObject.Find("PlayerMech").GetComponent<PlayerMechControllerScript>();
+		playerScript = GameObject.Find("PlayerMech").GetComponent<PlayerControlledMech>();
 		health = configFile.MaxHealth;
 		OnDestroy += Destroy;
 	}
@@ -50,6 +50,10 @@ public class EnemyScript : MonoBehaviour, IDestructible {
 
 	void Destroy() {
 		GameObject.Destroy(gameObject);
+	}
+
+	public bool Targetable(Team othersTeam) {
+		throw new System.NotImplementedException();
 	}
 
 }

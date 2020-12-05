@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MechSystemScript))]
+[RequireComponent(typeof(CombatMech))]
 public class ShowLockOnTargetArea : MonoBehaviour
 {
-	MechSystemScript script;
+	CombatMech script;
 
 	private void OnDrawGizmosSelected() {
 		if (!script)
-			script = GetComponent<MechSystemScript>();
-		if (script.configFile) {
+			script = GetComponent<CombatMech>();
+		if (script.mechConfig) {
 			Gizmos.color = Color.green;
-			Gizmos.DrawWireCube(transform.position + transform.forward * (script.configFile.LockOnDistrance / 2 + 1f), Vector3.one * script.configFile.LockOnDistrance);
+			Gizmos.DrawWireCube(transform.position + transform.forward * (script.mechConfig.LockOnDistrance / 2 + 1f), Vector3.one * script.mechConfig.LockOnDistrance);
 		}
 	}
 }

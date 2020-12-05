@@ -30,7 +30,7 @@ public class SuicideBomberEnemyScript : MovableEnemyScript
 	}
 
 	public void OnCollisionEnter(Collision col) {
-		if (col.gameObject.GetComponent<PlayerMechControllerScript>()) {
+		if (col.gameObject.GetComponent<PlayerControlledMech>()) {
 			Die();
 		}
 	}

@@ -5,14 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MechConfig", menuName = "ScriptableObject/MechConfig", order = 3)]
 public class MechConfig : ScriptableObject
 {
-
+	[SerializeField] Team team = Team.Blue;
+	public Team Team { get { return team; } }
 	[SerializeField] float maxHealth = 10;
 	public float MaxHealth { get { return maxHealth; } }
 	[SerializeField] float moveSpeed = 5;
 	public float MoveSpeed { get { return moveSpeed; } }
 	[SerializeField] float maxMoveSpeed = 5;
 	public float MaxMoveSpeed { get { return maxMoveSpeed; } }
-	[SerializeField] float turnSpeed = 5;
+	[SerializeField] float turnSpeed = 45;
 	public float TurnSpeed { get { return turnSpeed; } }
 	[SerializeField] float lockOnDistance = 15;
 	public float LockOnDistrance { get { return lockOnDistance; } }

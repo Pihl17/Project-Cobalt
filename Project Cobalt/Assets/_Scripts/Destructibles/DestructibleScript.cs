@@ -38,4 +38,8 @@ public class DestructibleScript : MonoBehaviour, IDestructible {
 		GameObject.Destroy(gameObject);
 	}
 
+	public bool Targetable(Team othersTeam) {
+		return true;
+	}
+
 }
