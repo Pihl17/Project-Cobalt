@@ -8,14 +8,17 @@ public class CombatMech : Mech
 {
 	protected Weapon[] weapons = new Weapon[2];
 	public Weapon[] Weapons { get { return weapons; } }
+	public RectTransform lockOnCrosshair;
+	Vector2 crosshairOffCamPos = new Vector2(-200, -200);
 	Transform lockOnTarget;
 	Transform oldLockOnTarget;
-	const float minTargetSwitchAngle = 5;
+	const float minTargetSwitchAngle = 10;
 	Collider[] possibleTargets;
 	float lockOnMinAngle;
 	float lockOnAngle;
 	Vector3 lockOnDir;
-	
+	bool lastTargetIsInRange;
+
 
 	protected override void Initialisation() {
 		base.Initialisation();
@@ -28,13 +31,22 @@ public class CombatMech : Mech
 		FindLockOnTarget();
 	}
 
+	void LateUpdate() {
+		MoveLockOnCrosshair();
+	}
+
 	protected void FindLockOnTarget() {
 		lockOnTarget = null;
+		lastTargetIsInRange = false;
 		lockOnMinAngle = oldLockOnTarget && (oldLockOnTarget.position - transform.position).magnitude <= mechConfig.LockOnDistrance 
 			? Vector3.Angle(transform.forward, (oldLockOnTarget.position - transform.position)) - minTargetSwitchAngle 
 			: 180f;
 		possibleTargets = Physics.OverlapBox(transform.position + transform.forward * (mechConfig.LockOnDistrance / 2 + 1f), Vector3.one * mechConfig.LockOnDistrance / 2, transform.rotation);
 		for (int i = 0; i < possibleTargets.Length; i++) {
+			if (possibleTargets[i].transform.Equals(oldLockOnTarget)) {
+				lastTargetIsInRange = true;
+				continue;
+			}
 			if (possibleTargets[i].GetComponent<IDestructible>() != null && possibleTargets[i].GetComponent<IDestructible>().Targetable(mechConfig.Team)) {
 				lockOnDir = possibleTargets[i].transform.position - transform.position;
 				if (lockOnDir.magnitude <= mechConfig.LockOnDistrance)
@@ -45,9 +57,19 @@ public class CombatMech : Mech
 				}
 			}
 		}
-		if (lockOnTarget == null)
+		if (lastTargetIsInRange && lockOnTarget == null)
 			lockOnTarget = oldLockOnTarget;
 		oldLockOnTarget = lockOnTarget;
+	}
+
+	protected void MoveLockOnCrosshair() {
+		if (lockOnCrosshair) {
+			if (lockOnTarget)
+				lockOnCrosshair.anchoredPosition = Camera.main.WorldToScreenPoint(lockOnTarget.position);
+			else
+				lockOnCrosshair.anchoredPosition = crosshairOffCamPos;
+
+		}
 	}
 
 	protected void FireWeapon(int index, InputActionPhase phase) {
