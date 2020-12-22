@@ -19,10 +19,10 @@ namespace Weapons {
 		public override void Fire(WeaponFireContext context) {
 			if (ReadyToUse()) {
 				if (context.triggerPhase == InputActionPhase.Performed) {
-					GameObject newBullet = GameObject.Instantiate(configFile.InstantiatableObjects[0], context.userTrans.position + context.mechConfig.LauncherLocation, Quaternion.identity);
-					newBullet.GetComponent<MortarBulletScript>().Fire(CalculateMortarVelocity(context.targetVector - context.mechConfig.LauncherLocation, configFile.FloatValue[ValueName.MinCurvatureHeight]), configFile.Damage, configFile.FloatValue[ValueName.ExplosionRadius]);
+					GameObject newBullet = GameObject.Instantiate(configFile.InstantiatableObjects[0], context.userTrans.position + context.artilleryPosition, Quaternion.identity);
+					newBullet.GetComponent<MortarBulletScript>().Fire(CalculateMortarVelocity(context.targetVector - context.artilleryPosition, configFile.FloatValue[ValueName.MinCurvatureHeight]), configFile.Damage, configFile.FloatValue[ValueName.ExplosionRadius]);
 
-					Debug.DrawLine(context.userTrans.position + context.mechConfig.LauncherLocation, context.userTrans.position + context.mechConfig.LauncherLocation + (context.targetVector - context.mechConfig.LauncherLocation), Color.red, 1.0f);
+					Debug.DrawLine(context.userTrans.position + context.artilleryPosition, context.userTrans.position + context.artilleryPosition + (context.targetVector - context.artilleryPosition), Color.red, 1.0f);
 
 					cooldownTimer = 0;
 				}

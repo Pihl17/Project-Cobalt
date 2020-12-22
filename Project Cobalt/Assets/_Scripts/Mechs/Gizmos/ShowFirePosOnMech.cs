@@ -11,8 +11,8 @@ public class ShowFirePosOnMech : MonoBehaviour
 		if (!script)
 			script = GetComponent<CombatMech>();
 		Gizmos.color = Color.yellow;
-		Gizmos.DrawWireSphere(transform.position + script.mechConfig.GunLocation, 0.1f);
+		Gizmos.DrawWireSphere(transform.position + transform.TransformDirection(script.mechConfig.GunLocation), 0.1f);
 		Gizmos.color = Color.blue;
-		Gizmos.DrawWireSphere(transform.position + script.mechConfig.LauncherLocation, 0.5f);
+		Gizmos.DrawWireSphere(transform.position + transform.TransformDirection(script.mechConfig.ArtilleryLocation), 0.5f);
 	}
 }

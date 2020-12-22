@@ -30,7 +30,7 @@ namespace Weapons {
 					//Debug.Log("Started!");
 					// Started can be used for auto-fire abilities
 
-					firePos = context.userTrans.position + context.GunPosition;//context.userTrans.TransformDirection(context.mechConfig.GunLocation);
+					firePos = context.userTrans.position + context.gunPosition;//context.userTrans.TransformDirection(context.mechConfig.GunLocation);
 					
 					//Debug.DrawLine(firePos, firePos + context.targetVector.normalized*configFile.Range, Color.red, 1.0f);
 					//Debug.DrawRay(firePos, (context.targetVector - context.userScript.GunLocation).normalized * configFile.Range, Color.red, 1.0f);
@@ -39,7 +39,7 @@ namespace Weapons {
 					muzzleFlashEffect.Play();
 
 					RaycastHit hit;
-					if (Physics.Raycast(firePos, (context.targetVector - context.mechConfig.GunLocation).normalized, out hit, configFile.Range)) {
+					if (Physics.Raycast(firePos, (context.targetVector - context.gunPosition).normalized, out hit, configFile.Range)) {
 						ApplyDamageToEnemy(hit.collider, configFile.Damage);
 						/*if (hit.collider.GetComponent<DestructableScript>()) {
 							hit.collider.GetComponent<DestructableScript>().Damage(configFile.Damage);
