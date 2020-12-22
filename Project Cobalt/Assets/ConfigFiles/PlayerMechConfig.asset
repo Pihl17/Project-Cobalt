@@ -19,4 +19,4 @@ MonoBehaviour:
   turnSpeed: 45
   lockOnDistance: 15
   gunLocation: {x: 0, y: 1.21, z: 1.16}
-  launcherLocation: {x: 0, y: 2.06, z: 0}
+  artilleryLocation: {x: 0, y: 2, z: -0.5}

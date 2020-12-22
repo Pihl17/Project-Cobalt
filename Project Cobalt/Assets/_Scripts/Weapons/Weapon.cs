@@ -48,15 +48,16 @@ namespace Weapons {
 		public InputActionPhase triggerPhase;
 		public Transform userTrans;
 		public Vector3 targetVector;
-		public MechConfig mechConfig;
 
-		public Vector3 GunPosition { get { return userTrans.TransformDirection(mechConfig.GunLocation); } }
+		public Vector3 gunPosition;
+		public Vector3 artilleryPosition;
 
 		public WeaponFireContext(InputActionPhase _triggerPhase, Transform _userTrans, Vector3 _targetVector, MechConfig _mechConfig) {
 			triggerPhase = _triggerPhase;
 			userTrans = _userTrans;
 			targetVector = _targetVector;
-			mechConfig = _mechConfig;
+			gunPosition = _userTrans.TransformDirection(_mechConfig.GunLocation);
+			artilleryPosition = _userTrans.TransformDirection(_mechConfig.ArtilleryLocation);
 		}
 
 	}
