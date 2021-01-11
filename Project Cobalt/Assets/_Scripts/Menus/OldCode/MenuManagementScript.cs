@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class MenuManagementScript : MonoBehaviour
 {
-	public MenuOption firstOption;
+	
+	/*public MenuOption firstOption;
 	MenuOption currentOption;
 
 	public void OpenMenu() {
@@ -40,7 +41,7 @@ public class MenuManagementScript : MonoBehaviour
 
 	public void SelectCurrentOption() {
 		currentOption.Select();
-	}
+	}*/
 
 
 }

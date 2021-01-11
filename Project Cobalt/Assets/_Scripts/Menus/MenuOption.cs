@@ -4,37 +4,20 @@ using UnityEngine;
 using System;
 
 [RequireComponent(typeof(ShowMenuOptionConnections))]
-public abstract class MenuOption : MonoBehaviour
+public class MenuOption : MonoBehaviour
 {
-	
-	[Serializable] 
-	public struct NearbyOptions {
-		public MenuOption up;
-		public MenuOption right;
-		public MenuOption down;
-		public MenuOption left;
+
+	[SerializeField] string optionName = "";
+
+	public MenuOption[] nearbourOption = new MenuOption[System.Enum.GetValues(typeof(Direction)).Length];
+
+	public void Select() {
+		print(optionName + " has been selected");
 	}
 
-	public NearbyOptions nearbyOption;
-
-	public abstract void Select();
-
-	public virtual MenuOption GetUpNeighbour() {
-		return nearbyOption.up;
+	public enum Direction { Up, Right, Down, Left }
+	public MenuOption GetNearbour(Direction direction) {
+		return nearbourOption[(int)direction];
 	}
-
-	public virtual MenuOption GetDownNeighbour() {
-		return nearbyOption.down;
-	}
-
-	public MenuOption GetRightNeighbour() {
-		return nearbyOption.right;
-	}
-
-	public MenuOption GetLeftNeighbour() {
-		return nearbyOption.left;
-	} 
-
-
 
 }
