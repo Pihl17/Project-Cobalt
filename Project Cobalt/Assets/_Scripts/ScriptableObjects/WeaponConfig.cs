@@ -5,7 +5,7 @@ using System;
 
 namespace Weapons {
 
-    public enum ValueName { None, ExplosionRadius, MinCurvatureHeight, ChargeTime, DamageMultiplier, RangeMultiplier }
+    public enum ValueName { None, ExplosionRadius, MinCurvatureHeight, SeekForce, MaxVelocity, ChargeTime, DamageMultiplier, RangeMultiplier }
 
     [CreateAssetMenu(fileName = "WeaponConfig", menuName = "ScriptableObject/WeaponConfig", order = 4)]
     public class WeaponConfig : ScriptableObject
@@ -18,12 +18,15 @@ namespace Weapons {
         public float Cooldown { get { return cooldown; } }
         public float FireRate { get { return 1 / cooldown; } }
 
-        [Header("Ability Specific")]
+        [Header("Weapon Specifications")]
         [SerializeField] float damage = 1;
         public float Damage { get { return damage; } }
 
         [SerializeField] float range = 10;
         public float Range { get { return range; } }
+
+		[SerializeField] float velocity = 5f;
+		public float Velocity { get { return velocity; } }
 
         [SerializeField] GameObject[] instantiatableObjects = new GameObject[0];
         public GameObject[] InstantiatableObjects { get { return instantiatableObjects; } }

@@ -20,7 +20,7 @@ namespace Weapons {
 			if (ReadyToUse()) {
 				if (context.triggerPhase == InputActionPhase.Performed) {
 					GameObject newBullet = GameObject.Instantiate(configFile.InstantiatableObjects[0], context.userTrans.position + context.artilleryPosition, Quaternion.identity);
-					newBullet.GetComponent<MortarBulletScript>().Fire(CalculateMortarVelocity(context.targetVector - context.artilleryPosition, configFile.FloatValue[ValueName.MinCurvatureHeight]), configFile.Damage, configFile.FloatValue[ValueName.ExplosionRadius]);
+					newBullet.GetComponent<MortarShell>().Fire(CalculateMortarVelocity(context.targetVector - context.artilleryPosition, configFile.FloatValue[ValueName.MinCurvatureHeight]), configFile.Damage, configFile.FloatValue[ValueName.ExplosionRadius]);
 
 					Debug.DrawLine(context.userTrans.position + context.artilleryPosition, context.userTrans.position + context.artilleryPosition + (context.targetVector - context.artilleryPosition), Color.red, 1.0f);
 

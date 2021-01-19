@@ -38,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "SpecialFire",
+                    "name": "ArtilleryFire",
                     "type": "Button",
                     "id": "6d06dfe7-f83b-4150-9467-ba01ce9b3498",
                     "expectedControlType": "Button",
@@ -367,7 +367,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "SpecialFire",
+                    "action": "ArtilleryFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7bfda452-5e53-409e-8617-74ccbba5bcc3",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ArtilleryFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

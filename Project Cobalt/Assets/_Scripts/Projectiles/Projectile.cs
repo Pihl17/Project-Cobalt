@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Rigidbody))]
-public class BulletScript : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
 	public bool enemyBullet;
 
@@ -27,6 +27,7 @@ public class BulletScript : MonoBehaviour
 	protected virtual void Initialization() {
 		rig = GetComponent<Rigidbody>();
 		OnImpact += DamageCollision;
+		timer = 0;
 	}
 
     // Update is called once per frame

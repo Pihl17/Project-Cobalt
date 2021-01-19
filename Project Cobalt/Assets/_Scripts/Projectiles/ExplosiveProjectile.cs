@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MortarBulletScript : BulletScript
+public class ExplosiveProjectile : Projectile
 {
 
 	float explodeRadius = 1;
@@ -14,16 +14,13 @@ public class MortarBulletScript : BulletScript
 
 	protected override void Initialization() {
 		base.Initialization();
-		timeAlive = 10;
 		OnImpact -= DamageCollision;
 		OnImpact += Explode;
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
+	void Update() {
 		CheckForSelfDestruct();
-    }
+	}
 
 	void Explode(Collision collision) {
 		/*Debug.DrawRay(transform.position, Vector3.right * explodeRadius, Color.red, 2.0f);

@@ -10,14 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa87fea3d3d92224689479c70e1cb7b9, type: 3}
-  m_Name: RechargableShieldConfig
+  m_Name: HomingMisslesConfig
   m_EditorClassIdentifier: 
-  abilityName: Rechargable Shield
-  cooldown: 7
-  damage: 1
-  range: 10
-  velocity: 5
-  instantiatableObjects: []
+  abilityName: Homing Missles
+  cooldown: 0.75
+  damage: 4
+  range: 15
+  velocity: 10
+  instantiatableObjects:
+  - {fileID: 4941244308067282116, guid: 58395f7e03ea1da4694265dfc42e0031, type: 3}
   floatValue:
-    keyValuePairs: []
+    keyValuePairs:
+    - key: 3
+      value: 64
+    - key: 4
+      value: 20
+    - key: 1
+      value: 0.5
   damageTime: 0

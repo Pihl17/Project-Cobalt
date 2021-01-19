@@ -48,7 +48,7 @@ namespace Weapons {
 						impactEffect.transform.LookAt(hit.point + hit.normal);
 						impactEffect.Play();
 					}
-					cooldownTimer = 0;
+					ResetCooldown();
 				}
 	
 			}

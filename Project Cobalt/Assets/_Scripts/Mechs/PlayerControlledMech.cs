@@ -15,17 +15,18 @@ public class PlayerControlledMech : CombatMech
 
 	void Start() {
 		Initialisation();
-
-		playerIn.actions.FindAction("PrimaryFire").performed += FirePrimaryWeapon;
-		playerIn.actions.FindAction("PrimaryFire").canceled += FirePrimaryWeapon;
-		playerIn.actions.FindAction("SecondaryFire").performed += FireSecondaryWeapon;
-		playerIn.actions.FindAction("SecondaryFire").canceled += FireSecondaryWeapon;
 	}
 
 	protected override void Initialisation() {
 		base.Initialisation();
 		playerIn = GetComponent<PlayerInput>();
 
+		playerIn.actions.FindAction("PrimaryFire").performed += FirePrimaryWeapon;
+		playerIn.actions.FindAction("PrimaryFire").canceled += FirePrimaryWeapon;
+		playerIn.actions.FindAction("SecondaryFire").performed += FireSecondaryWeapon;
+		playerIn.actions.FindAction("SecondaryFire").canceled += FireSecondaryWeapon;
+		playerIn.actions.FindAction("ArtilleryFire").performed += FireArtilleryWeapon;
+		playerIn.actions.FindAction("ArtilleryFire").canceled += FireArtilleryWeapon;
 	}
 
 	void FixedUpdate() {
@@ -59,6 +60,10 @@ public class PlayerControlledMech : CombatMech
 
 	void FireSecondaryWeapon(InputAction.CallbackContext context) {
 		StartFire(1, context);
+	}
+
+	void FireArtilleryWeapon(InputAction.CallbackContext context) {
+		StartFire(2, context);
 	}
 
 	void StartFire(int index, InputAction.CallbackContext context) {

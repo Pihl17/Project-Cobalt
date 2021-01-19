@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ParticleSystem))]
-public class BulletTrailEffectCallerScript : MonoBehaviour
+public class ProjectileTrailEffectCaller : MonoBehaviour
 {
 
 	void StopTrailEffect(Collision collision) {
@@ -12,12 +12,12 @@ public class BulletTrailEffectCallerScript : MonoBehaviour
 	}
 
 	void OnEnable() {
-		transform.parent.GetComponent<BulletScript>().OnImpact += StopTrailEffect;
+		transform.parent.GetComponent<Projectile>().OnImpact += StopTrailEffect;
 	}
 
 	void OnDisable() {
 		if (transform.parent)
-			transform.parent.GetComponent<BulletScript>().OnImpact -= StopTrailEffect;
+			transform.parent.GetComponent<Projectile>().OnImpact -= StopTrailEffect;
 	}
 
 }

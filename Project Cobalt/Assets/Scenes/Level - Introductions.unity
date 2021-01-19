@@ -701,7 +701,7 @@ MonoBehaviour:
     m_ActionName: UI - Default/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 5a14ceff-69ab-47a8-8631-324c246fdfbd
+  m_DefaultActionMap: Mech
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &657672094

@@ -27,6 +27,10 @@ namespace Weapons {
 			return cooldownTimer >= configFile.Cooldown;
 		}
 
+		protected void ResetCooldown() {
+			cooldownTimer = 0;
+		}
+
 		public float GetCooldownLeftRatio() {
 			return Mathf.Clamp(cooldownTimer/ configFile.Cooldown, 0, 1);
 		}
@@ -47,16 +51,20 @@ namespace Weapons {
 	public struct WeaponFireContext {
 		public InputActionPhase triggerPhase;
 		public Transform userTrans;
+		public Transform target;
 		public Vector3 targetVector;
 
 		public Vector3 gunPosition;
+		public Vector3 heavyPosition;
 		public Vector3 artilleryPosition;
 
-		public WeaponFireContext(InputActionPhase _triggerPhase, Transform _userTrans, Vector3 _targetVector, MechConfig _mechConfig) {
+		public WeaponFireContext(InputActionPhase _triggerPhase, Transform _userTrans, Transform _target, MechConfig _mechConfig) {
 			triggerPhase = _triggerPhase;
 			userTrans = _userTrans;
-			targetVector = _targetVector;
+			target = _target;
+			targetVector = _target != null ? _target.position - _userTrans.position : _userTrans.forward * _mechConfig.LockOnDistrance;
 			gunPosition = _userTrans.TransformDirection(_mechConfig.GunLocation);
+			heavyPosition = _userTrans.TransformDirection(_mechConfig.HeavyLocation);
 			artilleryPosition = _userTrans.TransformDirection(_mechConfig.ArtilleryLocation);
 		}
 

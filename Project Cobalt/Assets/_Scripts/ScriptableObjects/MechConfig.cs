@@ -21,6 +21,8 @@ public class MechConfig : ScriptableObject
 
 	[SerializeField] Vector3 gunLocation = new Vector3();
 	public Vector3 GunLocation { get { return gunLocation; } }
+	[SerializeField] Vector3 heavyLocation = new Vector3();
+	public Vector3 HeavyLocation { get { return heavyLocation; } }
 	[SerializeField] Vector3 artilleryLocation = new Vector3();
 	public Vector3 ArtilleryLocation { get { return artilleryLocation; } }
 

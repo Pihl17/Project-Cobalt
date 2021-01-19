@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ParticleSystem))]
-public class BulletImpactEffectCallerScript : MonoBehaviour
+public class ProjectileImpactEffectCaller : MonoBehaviour
 {
 
 	void ImpactEffect(Collision collision) {
@@ -12,12 +12,12 @@ public class BulletImpactEffectCallerScript : MonoBehaviour
 	}
 
 	void OnEnable() {
-		transform.parent.GetComponent<BulletScript>().OnImpact += ImpactEffect;
+		transform.parent.GetComponent<Projectile>().OnImpact += ImpactEffect;
 	}
 
 	void OnDisable() {
 		if (transform.parent)
-			transform.parent.GetComponent<BulletScript>().OnImpact -= ImpactEffect;
+			transform.parent.GetComponent<Projectile>().OnImpact -= ImpactEffect;
 	}
 
 }

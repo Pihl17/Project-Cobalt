@@ -6,7 +6,7 @@ using Weapons;
 
 public class CombatMech : Mech
 {
-	protected Weapon[] weapons = new Weapon[2];
+	protected Weapon[] weapons = new Weapon[3];
 	public Weapon[] Weapons { get { return weapons; } }
 	public RectTransform lockOnCrosshair;
 	Vector2 crosshairOffCamPos = new Vector2(-200, -200);
@@ -23,7 +23,8 @@ public class CombatMech : Mech
 	protected override void Initialisation() {
 		base.Initialisation();
 		weapons[0] = new RapidFireShot();
-		weapons[1] = new MortarStrike();
+		weapons[1] = new HomingMissleLauncher();
+		weapons[2] = new MortarStrike();
 	}
 
 	void Update() {
@@ -77,7 +78,7 @@ public class CombatMech : Mech
 	}
 
 	WeaponFireContext DefineWeaponFireContext(InputActionPhase phase) {
-		return new WeaponFireContext(phase, transform, lockOnTarget != null ? lockOnTarget.position - transform.position : transform.forward * mechConfig.LockOnDistrance, mechConfig);
+		return new WeaponFireContext(phase, transform, lockOnTarget, mechConfig);
 	}
 
 	public void ReplaceWeapon(int index, Weapon replacement) {

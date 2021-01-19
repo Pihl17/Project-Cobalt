@@ -16,6 +16,7 @@ MonoBehaviour:
   cooldown: 0.05
   damage: 0.25
   range: 15
+  velocity: 5
   instantiatableObjects:
   - {fileID: 1593435297619264537, guid: 38dcff72984b57a4fb93cba177af8288, type: 3}
   - {fileID: 1593435297619264537, guid: fd50ce845bd156f478d739532da37dbc, type: 3}
