@@ -31,9 +31,16 @@ namespace Weapons {
         [SerializeField] GameObject[] instantiatableObjects = new GameObject[0];
         public GameObject[] InstantiatableObjects { get { return instantiatableObjects; } }
 
-
         [SerializeField, HideInInspector] SerializedDictionary<ValueName, float> floatValue = new SerializedDictionary<ValueName, float>();
-        public Dictionary<ValueName, float> FloatValue { get { return floatValue; } set { floatValue = (SerializedDictionary<ValueName, float>)value; } } 
+        public Dictionary<ValueName, float> FloatValue { get { return floatValue; } set { floatValue = (SerializedDictionary<ValueName, float>)value; } }
+
+
+		[Header("Upgrade Specifications")]
+		[SerializeField] int upgradeMaxAmmo = 10;
+		public int UpgradeMaxAmmo { get { return upgradeMaxAmmo; } }
+
+		[SerializeField] float upgradeDamageMultiplier = 1;
+		public float UpgradeDamageMultiplier { get { return upgradeDamageMultiplier; } }
 
 
         public enum DamageTime { PerHit, PerSecond }

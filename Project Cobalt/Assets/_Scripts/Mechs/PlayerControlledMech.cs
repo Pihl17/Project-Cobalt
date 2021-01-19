@@ -10,6 +10,11 @@ public class PlayerControlledMech : CombatMech
 	PlayerInput playerIn;
 	Vector2 moveInput;
 
+	public delegate void PlayerInitialisedEvent(PlayerControlledMech playerScript);
+	public static event PlayerInitialisedEvent OnPlayerInitialisation;
+	public delegate void PlayerHealthChangeEvent(float health);
+	public static event PlayerHealthChangeEvent OnPlayerDamaged;
+	public static event PlayerHealthChangeEvent OnPlayerHealed;
 	public delegate void PlayerDestroyedEvent();
 	public static event PlayerDestroyedEvent OnPlayerDestroy;
 
@@ -27,6 +32,8 @@ public class PlayerControlledMech : CombatMech
 		playerIn.actions.FindAction("SecondaryFire").canceled += FireSecondaryWeapon;
 		playerIn.actions.FindAction("ArtilleryFire").performed += FireArtilleryWeapon;
 		playerIn.actions.FindAction("ArtilleryFire").canceled += FireArtilleryWeapon;
+
+		OnPlayerInitialisation?.Invoke(this);
 	}
 
 	void FixedUpdate() {
@@ -47,12 +54,21 @@ public class PlayerControlledMech : CombatMech
 		Turn(playerIn.actions.FindAction("Turn").ReadValue<float>());
 	}
 
+	public override void Damage(float amount) {
+		base.Damage(amount);
+		OnPlayerDamaged?.Invoke(Health);
+	}
+
+	public override void Heal(float amount) {
+		base.Heal(amount);
+		OnPlayerHealed?.Invoke(Health);
+	}
+
 	protected override void Destroy() {
 		base.Destroy();
 		if (OnPlayerDestroy != null)
 			OnPlayerDestroy.Invoke();
 	}
-
 
 	void FirePrimaryWeapon(InputAction.CallbackContext context) {
 		StartFire(0, context);

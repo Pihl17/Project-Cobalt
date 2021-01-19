@@ -12,8 +12,8 @@ namespace Weapons {
 		public float Cooldown { get { return configFile.Cooldown; } }
 
 		protected float cooldownTimer;
+		protected int upgradeAmmo = 0;
 
-		//public Coroutine coroutine;
 		[HideInInspector] public bool triggerHeldDown;
 
 		public abstract void Fire(WeaponFireContext context);
@@ -27,8 +27,10 @@ namespace Weapons {
 			return cooldownTimer >= configFile.Cooldown;
 		}
 
-		protected void ResetCooldown() {
+		protected void PostFireUpdates() {
 			cooldownTimer = 0;
+			if (upgradeAmmo > 0)
+				upgradeAmmo--;
 		}
 
 		public float GetCooldownLeftRatio() {
@@ -37,6 +39,18 @@ namespace Weapons {
 
 		public string GetName() {
 			return configFile.Name;
+		}
+
+		public int GetUpgradeMaxAmmo() {
+			return configFile.UpgradeMaxAmmo;
+		}
+
+		public int GetUpgradeAmmo() {
+			return upgradeAmmo;
+		}
+
+		public void Upgrade() {
+			upgradeAmmo = configFile.UpgradeMaxAmmo;
 		}
 
 		public static void ApplyDamageToEnemy(Collider collider, float amount) {
@@ -58,7 +72,9 @@ namespace Weapons {
 		public Vector3 heavyPosition;
 		public Vector3 artilleryPosition;
 
-		public WeaponFireContext(InputActionPhase _triggerPhase, Transform _userTrans, Transform _target, MechConfig _mechConfig) {
+		public int upgradeAmmo;
+
+		public WeaponFireContext(InputActionPhase _triggerPhase, Transform _userTrans, Transform _target, MechConfig _mechConfig, int _upgradeAmmo) {
 			triggerPhase = _triggerPhase;
 			userTrans = _userTrans;
 			target = _target;
@@ -66,6 +82,7 @@ namespace Weapons {
 			gunPosition = _userTrans.TransformDirection(_mechConfig.GunLocation);
 			heavyPosition = _userTrans.TransformDirection(_mechConfig.HeavyLocation);
 			artilleryPosition = _userTrans.TransformDirection(_mechConfig.ArtilleryLocation);
+			upgradeAmmo = _upgradeAmmo;
 		}
 
 	}

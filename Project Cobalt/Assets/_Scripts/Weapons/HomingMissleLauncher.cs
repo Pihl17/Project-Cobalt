@@ -18,7 +18,7 @@ public class HomingMissleLauncher : Weapon
 				HomingMissile newMissle = GameObject.Instantiate(configFile.InstantiatableObjects[0], context.userTrans.position + context.heavyPosition, context.userTrans.rotation).GetComponent<HomingMissile>();
 				newMissle.Fire(newMissle.transform.forward * configFile.Velocity, configFile.Damage, configFile.FloatValue[ValueName.ExplosionRadius], context.target, configFile.FloatValue[ValueName.SeekForce], configFile.FloatValue[ValueName.MaxVelocity]);
 
-				ResetCooldown();
+				PostFireUpdates();
 			}
 		}
 	}

@@ -6,7 +6,8 @@ using Weapons;
 
 public class CombatMech : Mech
 {
-	protected Weapon[] weapons = new Weapon[3];
+	const int numberOfWeapons = 3;
+	protected Weapon[] weapons = new Weapon[numberOfWeapons];
 	public Weapon[] Weapons { get { return weapons; } }
 	public RectTransform lockOnCrosshair;
 	Vector2 crosshairOffCamPos = new Vector2(-200, -200);
@@ -74,11 +75,11 @@ public class CombatMech : Mech
 	}
 
 	protected void FireWeapon(int index, InputActionPhase phase) {
-		weapons[index].Fire(DefineWeaponFireContext(phase));
+		weapons[index].Fire(DefineWeaponFireContext(index, phase));
 	}
 
-	WeaponFireContext DefineWeaponFireContext(InputActionPhase phase) {
-		return new WeaponFireContext(phase, transform, lockOnTarget, mechConfig);
+	WeaponFireContext DefineWeaponFireContext(int index, InputActionPhase phase) {
+		return new WeaponFireContext(phase, transform, lockOnTarget, mechConfig, 0 /*upgradeAmmo[index]*/);
 	}
 
 	public void ReplaceWeapon(int index, Weapon replacement) {

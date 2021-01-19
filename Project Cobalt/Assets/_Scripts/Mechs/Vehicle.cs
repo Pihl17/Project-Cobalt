@@ -11,18 +11,23 @@ public abstract class Vehicle : MonoBehaviour, IDestructible
 
 	protected Rigidbody rig;
 	float health = 10;
+	public float Health { get { return health; } }
 	Vector3 speed;
 
 	protected abstract float GetMaxVel();
-	protected abstract float GetMaxHealth();
+	public abstract float GetMaxHealth();
 
 
-	public void Damage(float amount) {
-		health = Mathf.Max(health - amount, 0);
+	public virtual void Damage(float amount) {
+		health = Mathf.Clamp(health - amount, 0, GetMaxHealth());
 		if (OnDamaged != null)
 			OnDamaged.Invoke(health, amount);
 		if (health <= 0)
 			Destroy();
+	}
+
+	public virtual void Heal(float amount) {
+		health = Mathf.Clamp(health + amount, 0, GetMaxHealth());
 	}
 
 	protected virtual void Initialisation() {

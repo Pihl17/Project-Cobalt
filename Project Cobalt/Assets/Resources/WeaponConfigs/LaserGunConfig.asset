@@ -21,4 +21,6 @@ MonoBehaviour:
   - {fileID: 1923939715372988714, guid: b0d8b904c9eca614ca33d103bbc507d5, type: 3}
   floatValue:
     keyValuePairs: []
+  upgradeMaxAmmo: 10
+  upgradeDamageMultiplier: 1
   damageTime: 1

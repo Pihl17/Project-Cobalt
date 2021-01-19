@@ -11,7 +11,7 @@ public class Mech : Vehicle
 		base.Initialisation();
 	}
 
-	protected override float GetMaxHealth() {
+	public override float GetMaxHealth() {
 		return mechConfig.MaxHealth;
 	}
 

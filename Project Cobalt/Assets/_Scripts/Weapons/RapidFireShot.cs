@@ -12,6 +12,7 @@ namespace Weapons {
 		//int damage = 1;
 		ParticleSystem muzzleFlashEffect;
 		ParticleSystem impactEffect;
+		ParticleSystem upgradeImpactEffect;
 		Vector3 firePos;
 
 		public RapidFireShot() {
@@ -25,6 +26,8 @@ namespace Weapons {
 				muzzleFlashEffect = GameObject.Instantiate(configFile.InstantiatableObjects[0],context.userTrans).GetComponent<ParticleSystem>();
 			if (!impactEffect)
 				impactEffect = GameObject.Instantiate(configFile.InstantiatableObjects[1]).GetComponent<ParticleSystem>();
+			if (!upgradeImpactEffect)
+				upgradeImpactEffect = GameObject.Instantiate(configFile.InstantiatableObjects[2]).GetComponent<ParticleSystem>();
 			if (ReadyToUse()) {
 				if (context.triggerPhase == InputActionPhase.Started) {
 					//Debug.Log("Started!");
@@ -40,19 +43,26 @@ namespace Weapons {
 
 					RaycastHit hit;
 					if (Physics.Raycast(firePos, (context.targetVector - context.gunPosition).normalized, out hit, configFile.Range)) {
-						ApplyDamageToEnemy(hit.collider, configFile.Damage);
-						/*if (hit.collider.GetComponent<DestructableScript>()) {
-							hit.collider.GetComponent<DestructableScript>().Damage(configFile.Damage);
-						}*/
-						impactEffect.transform.position = hit.point;
-						impactEffect.transform.LookAt(hit.point + hit.normal);
-						impactEffect.Play();
+						if (upgradeAmmo > 0) {
+							ApplyDamageToEnemy(hit.collider, configFile.Damage * configFile.UpgradeDamageMultiplier);
+							PlayImpactEffect(upgradeImpactEffect, hit);
+						} else {
+							ApplyDamageToEnemy(hit.collider, configFile.Damage);
+							PlayImpactEffect(impactEffect, hit);
+						}
 					}
-					ResetCooldown();
+					PostFireUpdates();
 				}
 	
 			}
 		}
+
+		void PlayImpactEffect(ParticleSystem particle, RaycastHit hit) {
+			particle.transform.position = hit.point;
+			particle.transform.LookAt(hit.point + hit.normal);
+			particle.Play();
+		}
+
 			
 	}
 }

@@ -25,4 +25,6 @@ MonoBehaviour:
       value: 5
     - key: 1
       value: 1.5
+  upgradeMaxAmmo: 10
+  upgradeDamageMultiplier: 1
   damageTime: 0

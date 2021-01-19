@@ -20,4 +20,6 @@ MonoBehaviour:
   instantiatableObjects: []
   floatValue:
     keyValuePairs: []
+  upgradeMaxAmmo: 10
+  upgradeDamageMultiplier: 1
   damageTime: 0
