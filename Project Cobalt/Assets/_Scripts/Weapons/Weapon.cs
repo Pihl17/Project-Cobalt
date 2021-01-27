@@ -18,6 +18,9 @@ namespace Weapons {
 
 		public abstract void Fire(WeaponFireContext context);
 
+		public void SetConfigFile(WeaponConfig weaponConfig) {
+			configFile = weaponConfig;
+		}
 
         public void UpdateCooldown() {
 			cooldownTimer += Time.deltaTime;

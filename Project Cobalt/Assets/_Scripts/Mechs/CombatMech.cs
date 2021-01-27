@@ -23,7 +23,7 @@ public class CombatMech : Mech
 
 	protected override void Initialisation() {
 		base.Initialisation();
-		weapons[0] = new RapidFireShot();
+		weapons[0] = new MachineGun();
 		weapons[1] = new HomingMissleLauncher();
 		weapons[2] = new MortarStrike();
 	}

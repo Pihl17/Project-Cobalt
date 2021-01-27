@@ -9,7 +9,7 @@ public class PlayerHealthDisplay : MonoBehaviour
 
 	Text healthText;
 
-	void Start() {
+	void Awake() {
 		healthText = GetComponent<Text>();
 	}
 
