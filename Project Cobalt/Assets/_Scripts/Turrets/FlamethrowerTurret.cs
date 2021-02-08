@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Weapons;
 
-public class MachineGunTurret : Turret<MachineGun> {
+public class FlamethrowerTurret : Turret<Flamethrower>
+{
 
 	protected override void Initialisation() {
-		gun = new MachineGun();
+		gun = new Flamethrower();
 		base.Initialisation();
-		gun.InitialisateEffects(transform);
 	}
 
 	protected override void FireGun() {
-		gun.Fire(transform.position + toTarget.normalized * 0.5f, toTarget);
+		gun.Fire(toTarget);
 	}
+
 }

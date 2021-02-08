@@ -1,9 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Weapons;
 
-public class Turret : MonoBehaviour, IDestructible
+public abstract class Turret<T> : MonoBehaviour, IDestructible where T : Weapon
 {
+
+	protected T gun;
+	public WeaponConfig weaponConfig;
+
+	public Transform target;
+	protected Vector3 toTarget;
 
 	float health = 5;
 
@@ -12,6 +19,7 @@ public class Turret : MonoBehaviour, IDestructible
 
 	protected virtual void Initialisation() {
 		OnDestroy += Destroy;
+		gun.SetConfigFile(weaponConfig);
 	}
 
 	// Start is called before the first frame update
@@ -23,7 +31,8 @@ public class Turret : MonoBehaviour, IDestructible
     // Update is called once per frame
     void Update()
     {
-        
+		gun.UpdateCooldown();
+		Aim();
     }
 
 	public bool Targetable(Team team) {
@@ -41,5 +50,11 @@ public class Turret : MonoBehaviour, IDestructible
 		Destroy(gameObject);
 	}
 
+	void Aim() {
+		toTarget = target.position - transform.position;
+		FireGun();
+	}
+
+	protected abstract void FireGun();
 
 }
