@@ -12,7 +12,7 @@ public class FlamethrowerTurret : Turret<Flamethrower>
 	}
 
 	protected override void FireGun() {
-		gun.Fire(toTarget);
+		gun.Fire(transform.position + toTarget.normalized, toTarget);
 	}
 
 }

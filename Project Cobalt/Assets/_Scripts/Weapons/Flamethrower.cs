@@ -10,9 +10,13 @@ namespace Weapons {
 			throw new System.NotImplementedException();
 		}
 
-		public void Fire(Vector3 direction) {
+		FlameParticle projectile;
+
+		public void Fire(Vector3 firePoint, Vector3 direction) {
 			if (ReadyToUse()) {
-				throw new System.NotImplementedException();
+				projectile = GameObject.Instantiate(configFile.InstantiatableObjects[0]).GetComponent<FlameParticle>();
+				projectile.Spawn(firePoint, direction.normalized * configFile.Velocity, configFile.Damage);
+
 				PostFireUpdates();
 			}
 		}

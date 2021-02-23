@@ -50,15 +50,19 @@ public class Projectile : MonoBehaviour
 	}
 
 	protected bool DamageCollision(Collider col) {
-		if (col.GetComponent<IDestructible>() != null) {
-			col.GetComponent<IDestructible>().Damage(damage);
-		}
-		return false;
+		return DamageCollision(col, damage);
 	}
 
 	protected void DamageCollision(Collision col) {
 		DamageCollision(col.collider);
 	}
 
+	public static bool DamageCollision(Collider col, float damage) {
+		if (col.GetComponent<IDestructible>() != null) {
+			col.GetComponent<IDestructible>().Damage(damage);
+			return true;
+		}
+		return false;
+	}
 
 }
