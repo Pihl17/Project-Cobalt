@@ -35,10 +35,6 @@ public abstract class Turret<T> : MonoBehaviour, IDestructible where T : Weapon
 		Aim();
     }
 
-	public bool Targetable(Team team) {
-		return true;
-	}
-
 	public void Damage(float amount) {
 		health = Mathf.Clamp(health - amount, 0, 5);
 		OnDamaged?.Invoke(health, amount);

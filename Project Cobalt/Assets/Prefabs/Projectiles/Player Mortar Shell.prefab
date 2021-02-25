@@ -4954,9 +4954,9 @@ GameObject:
   - component: {fileID: 3475757046424125845}
   - component: {fileID: 2466566833259427500}
   - component: {fileID: 3830976114883200035}
-  - component: {fileID: 6652970306735948110}
+  - component: {fileID: 6486108250575260388}
   m_Layer: 0
-  m_Name: PlayerMortar
+  m_Name: Player Mortar Shell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5056,7 +5056,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6652970306735948110
+--- !u!114 &6486108250575260388
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5065,10 +5065,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1751022577508210598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1d0a23ef27ed744e8d6c8ed9fc848fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 055f087292e8f4049bd271f79416da9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyBullet: 0
+  timeAlive: 10
 --- !u!1 &9009393704937553822
 GameObject:
   m_ObjectHideFlags: 0

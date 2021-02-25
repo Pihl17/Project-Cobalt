@@ -57,9 +57,5 @@ public abstract class Vehicle : MonoBehaviour, IDestructible
 			OnDestroy.Invoke();
 	}
 
-	public bool Targetable(Team othersTeam) {
-		throw new System.NotImplementedException();
-	}
-
 
 }

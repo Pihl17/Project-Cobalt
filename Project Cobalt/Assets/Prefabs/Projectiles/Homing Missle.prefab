@@ -9776,7 +9776,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4941244308067282119}
   - component: {fileID: 4941244308067282118}
-  - component: {fileID: 4941244308067282117}
+  - component: {fileID: 296208554757419474}
+  - component: {fileID: 4168225631520441520}
   m_Layer: 0
   m_Name: Homing Missle
   m_TagString: Untagged
@@ -9817,7 +9818,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4941244308067282117
+--- !u!114 &296208554757419474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9826,10 +9827,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 4941244308067282116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44b821133c39550418a995171e25dcc6, type: 3}
+  m_Script: {fileID: 11500000, guid: 055f087292e8f4049bd271f79416da9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyBullet: 0
+  timeAlive: 10
+--- !u!114 &4168225631520441520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4941244308067282116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0764c6513fc2c946befec91ef8dd19f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   target: {fileID: 0}
 --- !u!1 &4941244309243357187
 GameObject:

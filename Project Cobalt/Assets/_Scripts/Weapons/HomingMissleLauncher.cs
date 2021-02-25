@@ -15,8 +15,9 @@ public class HomingMissleLauncher : Weapon
 		if (ReadyToUse()) {
 			if (context.triggerPhase == UnityEngine.InputSystem.InputActionPhase.Started) {
 
-				HomingMissile newMissle = GameObject.Instantiate(configFile.InstantiatableObjects[0], context.userTrans.position + context.heavyPosition, context.userTrans.rotation).GetComponent<HomingMissile>();
-				newMissle.Fire(newMissle.transform.forward * configFile.Velocity, configFile.Damage, configFile.FloatValue[ValueName.ExplosionRadius], context.target, configFile.FloatValue[ValueName.SeekForce], configFile.FloatValue[ValueName.MaxVelocity]);
+				GameObject newMissle = GameObject.Instantiate(configFile.InstantiatableObjects[0], context.userTrans.position + context.heavyPosition, context.userTrans.rotation);
+				newMissle.GetComponent<ExplosiveProjectile>().Fire(newMissle.transform.forward * configFile.Velocity, configFile.Damage, configFile.FloatValue[ValueName.ExplosionRadius]);
+				newMissle.GetComponent<HomingGuidance>().GiveTarget(context.target, configFile.FloatValue[ValueName.SeekForce], configFile.FloatValue[ValueName.MaxVelocity]);
 
 				PostFireUpdates();
 			}

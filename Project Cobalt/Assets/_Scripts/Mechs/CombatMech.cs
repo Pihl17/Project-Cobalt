@@ -49,7 +49,7 @@ public class CombatMech : Mech
 				lastTargetIsInRange = true;
 				continue;
 			}
-			if (possibleTargets[i].GetComponent<IDestructible>() != null && possibleTargets[i].GetComponent<IDestructible>().Targetable(mechConfig.Team)) {
+			if (possibleTargets[i].GetComponent<IDestructible>() != null) {
 				lockOnDir = possibleTargets[i].transform.position - transform.position;
 				if (lockOnDir.magnitude <= mechConfig.LockOnDistrance)
 				lockOnAngle = Vector3.Angle(transform.forward, lockOnDir);

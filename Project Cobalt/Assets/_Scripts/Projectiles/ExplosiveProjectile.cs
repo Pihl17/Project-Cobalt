@@ -23,13 +23,10 @@ public class ExplosiveProjectile : Projectile
 	}
 
 	void Explode(Collision collision) {
-		/*Debug.DrawRay(transform.position, Vector3.right * explodeRadius, Color.red, 2.0f);
-		Debug.DrawRay(transform.position, -Vector3.right * explodeRadius, Color.red, 2.0f);
-		Debug.DrawRay(transform.position, Vector3.forward * explodeRadius, Color.red, 2.0f);
-		Debug.DrawRay(transform.position, -Vector3.forward * explodeRadius, Color.red, 2.0f);
-		Debug.DrawRay(transform.position, Vector3.up * explodeRadius, Color.red, 2.0f);
-		Debug.DrawRay(transform.position, -Vector3.up * explodeRadius, Color.red, 2.0f);*/
+		Explode();
+	}
 
+	void Explode() {
 		Collider[] colInRange = Physics.OverlapSphere(transform.position, explodeRadius);
 		for (int i = 0; i < colInRange.Length; i++) {
 			DamageCollision(colInRange[i]);

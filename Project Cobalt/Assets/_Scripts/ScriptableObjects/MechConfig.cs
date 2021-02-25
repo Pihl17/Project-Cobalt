@@ -5,8 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MechConfig", menuName = "ScriptableObject/MechConfig", order = 3)]
 public class MechConfig : ScriptableObject
 {
-	[SerializeField] Team team = Team.Blue;
-	public Team Team { get { return team; } }
 	[SerializeField] float maxHealth = 10;
 	public float MaxHealth { get { return maxHealth; } }
 	[SerializeField] float moveSpeed = 5;

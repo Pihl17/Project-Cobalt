@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
 	public bool enemyBullet;
 
 	float timer = 0;
-	protected float timeAlive = 3;
+	[SerializeField] protected float timeAlive = 3;
 	protected float damage = 2;
 
 	protected Rigidbody rig;
@@ -49,20 +49,14 @@ public class Projectile : MonoBehaviour
 		GameObject.Destroy(gameObject);
 	}
 
-	protected bool DamageCollision(Collider col) {
-		return DamageCollision(col, damage);
+	protected void DamageCollision(Collider col) {
+		if (col.GetComponent<IDestructible>() != null) {
+			col.GetComponent<IDestructible>().Damage(damage);
+		}
 	}
 
 	protected void DamageCollision(Collision col) {
 		DamageCollision(col.collider);
-	}
-
-	public static bool DamageCollision(Collider col, float damage) {
-		if (col.GetComponent<IDestructible>() != null) {
-			col.GetComponent<IDestructible>().Damage(damage);
-			return true;
-		}
-		return false;
 	}
 
 }
