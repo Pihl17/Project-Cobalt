@@ -25,7 +25,7 @@ public class CombatMech : Mech
 		base.Initialisation();
 		weapons[0] = new MachineGun();
 		weapons[1] = new HomingMissleLauncher();
-		weapons[2] = new MortarStrike();
+		weapons[2] = new MortarLauncher();
 	}
 
 	void Update() {
@@ -79,7 +79,7 @@ public class CombatMech : Mech
 	}
 
 	WeaponFireContext DefineWeaponFireContext(int index, InputActionPhase phase) {
-		return new WeaponFireContext(phase, transform, lockOnTarget, mechConfig, 0 /*upgradeAmmo[index]*/);
+		return new WeaponFireContext(phase, transform, lockOnTarget, mechConfig);
 	}
 
 	public void ReplaceWeapon(int index, Weapon replacement) {

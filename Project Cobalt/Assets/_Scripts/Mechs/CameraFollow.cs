@@ -2,24 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollowScript : MonoBehaviour
+public class CameraFollow : MonoBehaviour
 {
-
-	Transform followTarget;
 
 	public enum CameraPosition { Default, Sky }
 	static Vector3[] cameraOffsets = new Vector3[] { new Vector3(0, 10, -5), new Vector3(0, 15, -3.5f) };
 	static float[] rotationOffsets = new float[] { 45, 70 };
 	const float camTransitionTime = 1.5f;
+
+	Transform followTarget;
 	public CameraPosition cameraPosition = CameraPosition.Default;
-	Vector3 currentCameraVel;
-	float currentXRotationVel;
-	float currentXRotation;
 
 	float camFollowSpeed = 4.8f;
 	const float camTurnTime = 0.5f;
 	float curCamTurnSpeed = 0.0f;
-	
+
+	Vector3 currentCameraVel;
+	float currentXRotationVel;
+	float currentXRotation;
 
 	Vector3 currentOffset;
 	Vector3 camNextPos;

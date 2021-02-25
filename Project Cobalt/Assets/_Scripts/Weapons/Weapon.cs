@@ -75,9 +75,7 @@ namespace Weapons {
 		public Vector3 heavyPosition;
 		public Vector3 artilleryPosition;
 
-		public int upgradeAmmo;
-
-		public WeaponFireContext(InputActionPhase _triggerPhase, Transform _userTrans, Transform _target, MechConfig _mechConfig, int _upgradeAmmo) {
+		public WeaponFireContext(InputActionPhase _triggerPhase, Transform _userTrans, Transform _target, MechConfig _mechConfig) {
 			triggerPhase = _triggerPhase;
 			userTrans = _userTrans;
 			target = _target;
@@ -85,7 +83,6 @@ namespace Weapons {
 			gunPosition = _userTrans.TransformDirection(_mechConfig.GunLocation);
 			heavyPosition = _userTrans.TransformDirection(_mechConfig.HeavyLocation);
 			artilleryPosition = _userTrans.TransformDirection(_mechConfig.ArtilleryLocation);
-			upgradeAmmo = _upgradeAmmo;
 		}
 
 	}
