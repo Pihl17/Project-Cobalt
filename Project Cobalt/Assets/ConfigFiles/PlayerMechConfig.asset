@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7fa9600ce43f9f4ab7f1fba0087e787, type: 3}
   m_Name: PlayerMechConfig
   m_EditorClassIdentifier: 
-  team: 0
   maxHealth: 10
   moveSpeed: 2.5
   maxMoveSpeed: 5
   turnSpeed: 45
   lockOnDistance: 15
+  lockOnAngle: 60
   gunLocation: {x: 0, y: 0.1, z: 0.77}
   heavyLocation: {x: 0, y: 0.87, z: 0.77}
   artilleryLocation: {x: 0, y: 2, z: -0.5}

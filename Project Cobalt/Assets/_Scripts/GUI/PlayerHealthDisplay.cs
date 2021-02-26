@@ -17,20 +17,18 @@ public class PlayerHealthDisplay : MonoBehaviour
 		healthText.text = "Health: " + health.ToString("F0");
 	}
 
-	void UpdateHealthDisplay(PlayerControlledMech playerScript) {
+	void UpdateHealthDisplay(CombatMech playerScript) {
 		UpdateHealthDisplay(playerScript.Health);
 	}
-
+	
 	void OnEnable() {
-		PlayerControlledMech.OnPlayerDamaged += UpdateHealthDisplay;
-		PlayerControlledMech.OnPlayerHealed += UpdateHealthDisplay;
-		PlayerControlledMech.OnPlayerInitialisation += UpdateHealthDisplay;
+		PlayerControl.OnPlayerHealthChange += UpdateHealthDisplay;
+		PlayerControl.OnPlayerInitialisation += UpdateHealthDisplay;
 	}
 
 	void OnDisable() {
-		PlayerControlledMech.OnPlayerDamaged -= UpdateHealthDisplay;
-		PlayerControlledMech.OnPlayerHealed -= UpdateHealthDisplay;
-		PlayerControlledMech.OnPlayerInitialisation -= UpdateHealthDisplay;
+		PlayerControl.OnPlayerHealthChange -= UpdateHealthDisplay;
+		PlayerControl.OnPlayerInitialisation -= UpdateHealthDisplay;
 	}
 
 }

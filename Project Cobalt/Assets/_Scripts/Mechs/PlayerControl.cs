@@ -4,17 +4,16 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
-public class PlayerControlledMech : CombatMech
+public class PlayerControl : MonoBehaviour
 {
 
+	CombatMech playerMech;
 	PlayerInput playerIn;
-	Vector2 moveInput;
 
-	public delegate void PlayerInitialisedEvent(PlayerControlledMech playerScript);
+	public delegate void PlayerInitialisedEvent(CombatMech mechScript);
 	public static event PlayerInitialisedEvent OnPlayerInitialisation;
 	public delegate void PlayerHealthChangeEvent(float health);
-	public static event PlayerHealthChangeEvent OnPlayerDamaged;
-	public static event PlayerHealthChangeEvent OnPlayerHealed;
+	public static event PlayerHealthChangeEvent OnPlayerHealthChange;
 	public delegate void PlayerDestroyedEvent();
 	public static event PlayerDestroyedEvent OnPlayerDestroy;
 
@@ -22,9 +21,10 @@ public class PlayerControlledMech : CombatMech
 		Initialisation();
 	}
 
-	protected override void Initialisation() {
-		base.Initialisation();
+	void Initialisation() {
 		playerIn = GetComponent<PlayerInput>();
+		playerMech = GetComponent<CombatMech>();
+		AddListenToMechEvents();
 
 		playerIn.actions.FindAction("PrimaryFire").performed += FirePrimaryWeapon;
 		playerIn.actions.FindAction("PrimaryFire").canceled += FirePrimaryWeapon;
@@ -33,7 +33,7 @@ public class PlayerControlledMech : CombatMech
 		playerIn.actions.FindAction("ArtilleryFire").performed += FireArtilleryWeapon;
 		playerIn.actions.FindAction("ArtilleryFire").canceled += FireArtilleryWeapon;
 
-		OnPlayerInitialisation?.Invoke(this);
+		OnPlayerInitialisation?.Invoke(playerMech);
 	}
 
 	void FixedUpdate() {
@@ -47,25 +47,18 @@ public class PlayerControlledMech : CombatMech
 	}
 
 	void MoveInput() {
-		Move(playerIn.actions.FindAction("Move").ReadValue<Vector2>());
+		playerMech.Walk(playerIn.actions.FindAction("Move").ReadValue<Vector2>());
 	}
 
 	void TurnInput() {
-		Turn(playerIn.actions.FindAction("Turn").ReadValue<float>());
+		playerMech.Turn(playerIn.actions.FindAction("Turn").ReadValue<float>());
 	}
 
-	public override void Damage(float amount) {
-		base.Damage(amount);
-		OnPlayerDamaged?.Invoke(Health);
+	void AnnounchHealthChange(float remainingHealth, float healthChange) {
+		OnPlayerHealthChange?.Invoke(remainingHealth);
 	}
 
-	public override void Heal(float amount) {
-		base.Heal(amount);
-		OnPlayerHealed?.Invoke(Health);
-	}
-
-	protected override void Destroy() {
-		base.Destroy();
+	void AnnounchPlayerDestroy() {
 		if (OnPlayerDestroy != null)
 			OnPlayerDestroy.Invoke();
 	}
@@ -83,21 +76,25 @@ public class PlayerControlledMech : CombatMech
 	}
 
 	void StartFire(int index, InputAction.CallbackContext context) {
-		FireWeapon(index, context.phase);
-		if (context.action.phase == InputActionPhase.Performed)
-			StartCoroutine(AutomaticFire(index, weapons[index].Cooldown));
-		else if (context.action.phase == InputActionPhase.Canceled)
-			weapons[index].triggerHeldDown = false;
+		playerMech.FireWeapon(index);
+		playerMech.SetAutomaticFire(index, context.action.phase == InputActionPhase.Performed);
 	}
 
-	IEnumerator AutomaticFire(int index, float waitTime) {
-		if (weapons[index] != null) {
-			weapons[index].triggerHeldDown = true;
-			while (weapons[index].triggerHeldDown) {
-				FireWeapon(index, InputActionPhase.Started);
-				yield return new WaitForSeconds(waitTime);
-			}
+	void AddListenToMechEvents() {
+		playerMech.OnHealthChanged += AnnounchHealthChange;
+		playerMech.OnDestroy += AnnounchPlayerDestroy;
+	}
+
+
+	private void OnEnable() {
+		if (playerMech) {
+			AddListenToMechEvents();
 		}
+	}
+
+	private void OnDisable() {
+		playerMech.OnHealthChanged -= AnnounchHealthChange;
+		playerMech.OnDestroy -= AnnounchPlayerDestroy;
 	}
 
 }

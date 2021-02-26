@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Weapons {
 
@@ -12,17 +11,11 @@ namespace Weapons {
             configFile = Resources.Load<WeaponConfig>("WeaponConfigs/MortarStrikeConfig");
         }
 
-		public override void Fire(WeaponFireContext context) {
-			if (ReadyToUse()) {
-				if (context.triggerPhase == InputActionPhase.Performed) {
-					GameObject newBullet = GameObject.Instantiate(configFile.InstantiatableObjects[0], context.userTrans.position + context.artilleryPosition, Quaternion.identity);
-					newBullet.GetComponent<ExplosiveProjectile>().Fire(CalculateMortarVelocity(context.targetVector - context.artilleryPosition, configFile.FloatValue[ValueName.MinCurvatureHeight]), configFile.Damage, configFile.FloatValue[ValueName.ExplosionRadius]);
+		protected override void Firing(WeaponFireContext context) {
+			GameObject newBullet = GameObject.Instantiate(configFile.InstantiatableObjects[0], context.userTrans.position + context.firePos, Quaternion.identity);
+			newBullet.GetComponent<ExplosiveProjectile>().Fire(CalculateMortarVelocity(context.targetVector - context.firePos, configFile.FloatValue[ValueName.MinCurvatureHeight]), configFile.Damage, configFile.FloatValue[ValueName.ExplosionRadius]);
 
-					Debug.DrawLine(context.userTrans.position + context.artilleryPosition, context.userTrans.position + context.artilleryPosition + (context.targetVector - context.artilleryPosition), Color.red, 1.0f);
-
-					cooldownTimer = 0;
-				}
-			}
+			Debug.DrawLine(context.userTrans.position + context.firePos, context.userTrans.position + context.firePos + (context.targetVector - context.firePos), Color.red, 1.0f);
 		}
 
 

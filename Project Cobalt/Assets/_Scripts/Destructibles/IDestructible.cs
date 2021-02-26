@@ -4,13 +4,13 @@ using UnityEngine;
 
 public interface IDestructible 
 {
-	event DamagedEvent OnDamaged;
+	event HealthChangeEvent OnHealthChanged;
 	event DestroyedEvent OnDestroy;
 
 	void Damage(float amount);
 
 }
 
-public delegate void DamagedEvent(float remainingHealth, float healthLost);
+public delegate void HealthChangeEvent(float remainingHealth, float healthLost);
 public delegate void DestroyedEvent();
 

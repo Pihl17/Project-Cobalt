@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Weapons {
 
@@ -14,9 +13,14 @@ namespace Weapons {
 		protected float cooldownTimer;
 		protected int upgradeAmmo = 0;
 
-		[HideInInspector] public bool triggerHeldDown;
+		public void Fire(WeaponFireContext context) {
+			if (ReadyToUse()) {
+				Firing(context);
+				PostFireUpdates();
+			}
+		}
 
-		public abstract void Fire(WeaponFireContext context);
+		protected abstract void Firing(WeaponFireContext context);
 
 		public void SetConfigFile(WeaponConfig weaponConfig) {
 			configFile = weaponConfig;
@@ -62,27 +66,21 @@ namespace Weapons {
 			}
 		}
 
+
 	}
 
 
 	public struct WeaponFireContext {
-		public InputActionPhase triggerPhase;
 		public Transform userTrans;
 		public Transform target;
 		public Vector3 targetVector;
+		public Vector3 firePos;
 
-		public Vector3 gunPosition;
-		public Vector3 heavyPosition;
-		public Vector3 artilleryPosition;
-
-		public WeaponFireContext(InputActionPhase _triggerPhase, Transform _userTrans, Transform _target, MechConfig _mechConfig) {
-			triggerPhase = _triggerPhase;
+		public WeaponFireContext(Transform _userTrans, Transform _target, Vector3 _targetVector, Vector3 _localFirePos) {
 			userTrans = _userTrans;
 			target = _target;
-			targetVector = _target != null ? _target.position - _userTrans.position : _userTrans.forward * _mechConfig.LockOnDistrance;
-			gunPosition = _userTrans.TransformDirection(_mechConfig.GunLocation);
-			heavyPosition = _userTrans.TransformDirection(_mechConfig.HeavyLocation);
-			artilleryPosition = _userTrans.TransformDirection(_mechConfig.ArtilleryLocation);
+			targetVector = _targetVector;
+			firePos = _userTrans.TransformDirection(_localFirePos);
 		}
 
 	}

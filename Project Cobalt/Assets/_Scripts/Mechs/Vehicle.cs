@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class Vehicle : MonoBehaviour, IDestructible
 {
 
-	public event DamagedEvent OnDamaged;
+	public event HealthChangeEvent OnHealthChanged;
 	public event DestroyedEvent OnDestroy;
 
 	protected Rigidbody rig;
@@ -17,30 +17,30 @@ public abstract class Vehicle : MonoBehaviour, IDestructible
 	protected abstract float GetMaxVel();
 	public abstract float GetMaxHealth();
 
+	protected virtual void Initialisation() {
+		health = GetMaxHealth();
+		rig = GetComponent<Rigidbody>();
+	}
 
 	public virtual void Damage(float amount) {
 		health = Mathf.Clamp(health - amount, 0, GetMaxHealth());
-		if (OnDamaged != null)
-			OnDamaged.Invoke(health, amount);
+		OnHealthChanged?.Invoke(health, amount);
 		if (health <= 0)
 			Destroy();
 	}
 
 	public virtual void Heal(float amount) {
 		health = Mathf.Clamp(health + amount, 0, GetMaxHealth());
+		OnHealthChanged?.Invoke(health, -amount);
 	}
 
-	protected virtual void Initialisation() {
-		health = GetMaxHealth();
-		rig = GetComponent<Rigidbody>();
-	}
 
 	protected virtual void Drive(float forward) {
 		rig.AddForce(transform.forward * forward);
-		LimitSpeed();
+		LimitMoveSpeed();
 	}
 	
-	protected void LimitSpeed() {
+	protected void LimitMoveSpeed() {
 		speed = rig.velocity;
 		speed.y = 0;
 		if (speed.magnitude > GetMaxVel()) {
@@ -48,13 +48,12 @@ public abstract class Vehicle : MonoBehaviour, IDestructible
 		}
 	}
 
-	protected virtual void Turn(float rightAngle) {
+	public virtual void Turn(float rightAngle) {
 		transform.Rotate(Vector3.up * rightAngle * Time.deltaTime);
 	}
 
 	protected virtual void Destroy() {
-		if (OnDestroy != null)
-			OnDestroy.Invoke();
+		OnDestroy?.Invoke();
 	}
 
 

@@ -3,21 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using Weapons;
 
-public abstract class Turret<T> : MonoBehaviour, IDestructible where T : Weapon
+public class Turret : MonoBehaviour, IDestructible
 {
 
-	protected T gun;
+	Weapon gun;
 	public WeaponConfig weaponConfig;
 
 	public Transform target;
-	protected Vector3 toTarget;
+	WeaponFireContext fireContext;
 
 	float health = 5;
 
-	public event DamagedEvent OnDamaged;
+	public event HealthChangeEvent OnHealthChanged;
 	public event DestroyedEvent OnDestroy;
 
 	protected virtual void Initialisation() {
+		gun = new MachineGun();
+		fireContext = new WeaponFireContext();
+		fireContext.userTrans = transform;
+		FindTarget();
 		OnDestroy += Destroy;
 		gun.SetConfigFile(weaponConfig);
 	}
@@ -37,7 +41,7 @@ public abstract class Turret<T> : MonoBehaviour, IDestructible where T : Weapon
 
 	public void Damage(float amount) {
 		health = Mathf.Clamp(health - amount, 0, 5);
-		OnDamaged?.Invoke(health, amount);
+		OnHealthChanged?.Invoke(health, amount);
 		if (health <= 0)
 			OnDestroy?.Invoke();
 	}
@@ -47,10 +51,17 @@ public abstract class Turret<T> : MonoBehaviour, IDestructible where T : Weapon
 	}
 
 	void Aim() {
-		toTarget = target.position - transform.position;
+		fireContext.targetVector = target.position - transform.position;
+		fireContext.firePos = fireContext.targetVector.normalized * 0.5f;
 		FireGun();
 	}
 
-	protected abstract void FireGun();
+	void FindTarget() {
+		fireContext.target = target;
+	}
+
+	void FireGun() {
+		gun.Fire(fireContext);
+	}
 
 }
