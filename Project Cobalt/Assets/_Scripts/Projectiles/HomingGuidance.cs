@@ -34,8 +34,8 @@ public class HomingGuidance : MonoBehaviour
 		if (target) {
 			steerDir = ((target.position - transform.position).normalized * maxVel - rig.velocity).normalized;
 			rig.AddForce(steerDir * seekForce * Time.deltaTime, ForceMode.VelocityChange);
+			transform.LookAt(transform.position + rig.velocity);
 		}
-		transform.LookAt(transform.position + rig.velocity);
 	}
 
 	void FixedUpdate() {
