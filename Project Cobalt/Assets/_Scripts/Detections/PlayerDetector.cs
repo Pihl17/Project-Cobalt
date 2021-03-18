@@ -6,23 +6,31 @@ using UnityEngine;
 public class PlayerDetector : MonoBehaviour
 {
 
-	public Turret detectingUnit;
+	public GameObject TheDetectingUnit;
+	IDetectingUnit DetectingUnit;
 
 	void Start() {
-		GetComponent<SphereCollider>().radius = detectingUnit.GetWeaponConfig().Range;
+		GetComponent<SphereCollider>().radius = DetectingUnit.GetWeaponConfig().Range;
 	}
 
 	private void OnTriggerEnter(Collider other) {
 		PlayerControl target = other.GetComponent<PlayerControl>();
 		if (target) {
-			detectingUnit.AddTarget(target);
+			DetectingUnit.AddTarget(target.transform);
 		}
 	}
 
 	private void OnTriggerExit(Collider other) {
 		PlayerControl target = other.GetComponent<PlayerControl>();
 		if (target) {
-			detectingUnit.RemoveTarget(target);
+			DetectingUnit.RemoveTarget(target.transform);
+		}
+	}
+
+	private void OnValidate() {
+		if (TheDetectingUnit) {
+			DetectingUnit = TheDetectingUnit.GetComponent<IDetectingUnit>();
+			if (DetectingUnit == null) TheDetectingUnit = null;
 		}
 	}
 

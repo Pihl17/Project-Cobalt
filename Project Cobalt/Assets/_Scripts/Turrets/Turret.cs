@@ -4,22 +4,20 @@ using UnityEngine;
 using Weapons;
 using UnityEditor;
 
-public class Turret : MonoBehaviour, IDestructible
+public class Turret : MonoBehaviour, IDestructible, IDetectingUnit
 {
 	
-	Weapon gun;
 	public Weapon.WeaponType weaponType;
 	public WeaponConfig weaponConfig;
-
-	//public Transform target;
-	WeaponFireContext fireContext;
-
 	public float maxHealth = 5;
+
 	float health;
+	Weapon gun;
+	WeaponFireContext fireContext;
+	Transform targetInRange;
 
 	public event HealthChangeEvent OnHealthChanged;
 	public event DestroyedEvent OnDestroy;
-	Transform targetInRange;
 
 	protected virtual void Initialisation() {
 		gun = Weapon.DefineType(weaponType);
@@ -55,11 +53,11 @@ public class Turret : MonoBehaviour, IDestructible
 		Destroy(gameObject);
 	}
 
-	public void AddTarget(PlayerControl target) {
+	public void AddTarget(Transform target) {
 		targetInRange = target.transform;
 	}
 
-	public void RemoveTarget(PlayerControl target) {
+	public void RemoveTarget(Transform target) {
 		if (targetInRange == target.transform)
 			targetInRange = null;
 	}

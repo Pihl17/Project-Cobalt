@@ -5008,7 +5008,7 @@ GameObject:
   - component: {fileID: 3736098602885926775}
   - component: {fileID: 1937146140643751286}
   - component: {fileID: 4501666889980145760}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5054,4 +5054,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed193695eaabcfe49a0490513aa4b75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectingUnit: {fileID: 6641977077528376855}
+  TheDetectingUnit: {fileID: 6641977077528376854}
