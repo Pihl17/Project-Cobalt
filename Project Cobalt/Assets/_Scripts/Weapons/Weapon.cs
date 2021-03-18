@@ -67,7 +67,21 @@ namespace Weapons {
 		}
 
 
+		public enum WeaponType { MachineGun, MissleLauncher }
+		public static Weapon DefineType(WeaponType weaponType) {
+			switch (weaponType) {
+				case WeaponType.MachineGun:
+					return new MachineGun();
+				case WeaponType.MissleLauncher:
+					return new MissleLauncher();
+			}
+			Debug.LogError("Weapon.DefineType does not return any weapons of type " + weaponType.ToString() + " - ADD IT TO THE FUNCTION!");
+			throw new System.Exception();
+		}
+
 	}
+
+	
 
 
 	public struct WeaponFireContext {

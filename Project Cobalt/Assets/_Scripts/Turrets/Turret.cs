@@ -2,28 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Weapons;
+using UnityEditor;
 
 public class Turret : MonoBehaviour, IDestructible
 {
-
+	
 	Weapon gun;
+	public Weapon.WeaponType weaponType;
 	public WeaponConfig weaponConfig;
 
-	public Transform target;
+	//public Transform target;
 	WeaponFireContext fireContext;
 
-	float health = 5;
+	public float maxHealth = 5;
+	float health;
 
 	public event HealthChangeEvent OnHealthChanged;
 	public event DestroyedEvent OnDestroy;
+	Transform targetInRange;
 
 	protected virtual void Initialisation() {
-		gun = new MachineGun();
+		gun = Weapon.DefineType(weaponType);
 		fireContext = new WeaponFireContext();
 		fireContext.userTrans = transform;
 		FindTarget();
 		OnDestroy += Destroy;
 		gun.SetConfigFile(weaponConfig);
+		health = maxHealth;
 	}
 
 	// Start is called before the first frame update
@@ -50,14 +55,29 @@ public class Turret : MonoBehaviour, IDestructible
 		Destroy(gameObject);
 	}
 
+	public void AddTarget(PlayerControl target) {
+		targetInRange = target.transform;
+	}
+
+	public void RemoveTarget(PlayerControl target) {
+		if (targetInRange == target.transform)
+			targetInRange = null;
+	}
+
+	public WeaponConfig GetWeaponConfig() {
+		return weaponConfig;
+	}
+
 	void Aim() {
-		fireContext.targetVector = target.position - transform.position;
-		fireContext.firePos = fireContext.targetVector.normalized * 0.5f;
-		FireGun();
+		if (targetInRange) {
+			fireContext.targetVector = targetInRange.position - transform.position;
+			fireContext.firePos = fireContext.targetVector.normalized * 0.75f;
+			FireGun();
+		}
 	}
 
 	void FindTarget() {
-		fireContext.target = target;
+		fireContext.target = targetInRange;
 	}
 
 	void FireGun() {
