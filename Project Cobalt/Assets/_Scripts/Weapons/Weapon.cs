@@ -66,7 +66,6 @@ namespace Weapons {
 			}
 		}
 
-
 		public enum WeaponType { MachineGun, MissleLauncher }
 		public static Weapon DefineType(WeaponType weaponType) {
 			switch (weaponType) {
@@ -75,9 +74,16 @@ namespace Weapons {
 				case WeaponType.MissleLauncher:
 					return new MissleLauncher();
 			}
-			Debug.LogError("Weapon.DefineType does not return any weapons of type " + weaponType.ToString() + " - ADD IT TO THE FUNCTION!");
+			Debug.LogError("WeaponAdaptor.DefineType does not return any weapons of type " + weaponType.ToString() + " - ADD IT TO THE FUNCTION!");
 			throw new System.Exception();
 		}
+
+		public static Weapon DefineType(WeaponType weaponType, WeaponConfig config) {
+			Weapon weapon = DefineType(weaponType);
+			weapon.SetConfigFile(config);
+			return weapon;
+		}
+		
 
 	}
 
@@ -99,3 +105,4 @@ namespace Weapons {
 
 	}
 }
+ 

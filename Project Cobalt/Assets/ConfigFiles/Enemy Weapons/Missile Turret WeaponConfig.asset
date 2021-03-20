@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa87fea3d3d92224689479c70e1cb7b9, type: 3}
-  m_Name: Missile Turret Config
+  m_Name: Missile Turret WeaponConfig
   m_EditorClassIdentifier: 
   abilityName: Missles
   cooldown: 0.75
@@ -21,10 +21,6 @@ MonoBehaviour:
   - {fileID: 7708169238423857922, guid: cf90031d04eb5474495a3867f02411c5, type: 3}
   floatValue:
     keyValuePairs:
-    - key: 3
-      value: 64
-    - key: 4
-      value: 20
     - key: 1
       value: 0.5
   upgradeMaxAmmo: 10

@@ -10,7 +10,7 @@ public class PlayerDetector : MonoBehaviour
 	IDetectingUnit DetectingUnit;
 
 	void Start() {
-		GetComponent<SphereCollider>().radius = DetectingUnit.GetWeaponConfig().Range;
+		GetComponent<SphereCollider>().radius = DetectingUnit.GetDetectionRange();
 	}
 
 	private void OnTriggerEnter(Collider other) {
@@ -31,6 +31,13 @@ public class PlayerDetector : MonoBehaviour
 		if (TheDetectingUnit) {
 			DetectingUnit = TheDetectingUnit.GetComponent<IDetectingUnit>();
 			if (DetectingUnit == null) TheDetectingUnit = null;
+		}
+	}
+
+	private void OnDrawGizmosSelected() {
+		if (DetectingUnit != null) {
+			Gizmos.color = Color.green;
+			Gizmos.DrawWireSphere(transform.position, DetectingUnit.GetDetectionRange());
 		}
 	}
 

@@ -7,7 +7,7 @@ using System;
 public interface IDetectingUnit 
 {
 
-	WeaponConfig GetWeaponConfig();
+	float GetDetectionRange();
 
 	void AddTarget(Transform target);
 	void RemoveTarget(Transform target);

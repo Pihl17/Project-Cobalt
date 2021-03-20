@@ -4,12 +4,15 @@ using UnityEngine;
 using Weapons;
 using UnityEditor;
 
+
 public class Turret : MonoBehaviour, IDestructible, IDetectingUnit
 {
-	
-	public Weapon.WeaponType weaponType;
-	public WeaponConfig weaponConfig;
-	public float maxHealth = 5;
+
+	public TurretConfig config;
+
+	//public Weapon.WeaponType weaponType;
+	//public WeaponConfig weaponConfig;
+	//public float maxHealth = 5;
 
 	float health;
 	Weapon gun;
@@ -20,13 +23,12 @@ public class Turret : MonoBehaviour, IDestructible, IDetectingUnit
 	public event DestroyedEvent OnDestroy;
 
 	protected virtual void Initialisation() {
-		gun = Weapon.DefineType(weaponType);
+		gun = Weapon.DefineType(config.WeaponType, config.WeaponConfig);
 		fireContext = new WeaponFireContext();
 		fireContext.userTrans = transform;
 		FindTarget();
 		OnDestroy += Destroy;
-		gun.SetConfigFile(weaponConfig);
-		health = maxHealth;
+		health = config.MaxHealth;
 	}
 
 	// Start is called before the first frame update
@@ -43,7 +45,7 @@ public class Turret : MonoBehaviour, IDestructible, IDetectingUnit
     }
 
 	public void Damage(float amount) {
-		health = Mathf.Clamp(health - amount, 0, 5);
+		health = Mathf.Clamp(health - amount, 0, config.MaxHealth);
 		OnHealthChanged?.Invoke(health, amount);
 		if (health <= 0)
 			OnDestroy?.Invoke();
@@ -62,8 +64,8 @@ public class Turret : MonoBehaviour, IDestructible, IDetectingUnit
 			targetInRange = null;
 	}
 
-	public WeaponConfig GetWeaponConfig() {
-		return weaponConfig;
+	public float GetDetectionRange() {
+		return config.WeaponConfig.Range;
 	}
 
 	void Aim() {
