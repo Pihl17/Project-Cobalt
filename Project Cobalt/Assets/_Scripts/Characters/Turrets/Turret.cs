@@ -10,10 +10,6 @@ public class Turret : MonoBehaviour, IDestructible, IDetectingUnit
 
 	public TurretConfig config;
 
-	//public Weapon.WeaponType weaponType;
-	//public WeaponConfig weaponConfig;
-	//public float maxHealth = 5;
-
 	float health;
 	Weapon gun;
 	WeaponFireContext fireContext;

@@ -59,7 +59,7 @@ public class Rifleman : Human, IDetectingUnit
 	}
 
 	void FireAtTarget() {
-		gun.Fire(new WeaponFireContext(transform, target, toTarget, Vector3.forward * 0.75f));
+		gun.Fire(new WeaponFireContext(transform, target, toTarget, Vector3.forward * 0.25f));
 	}
 
 }

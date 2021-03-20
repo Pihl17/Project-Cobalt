@@ -37,7 +37,8 @@ public class PlayerDetector : MonoBehaviour
 	private void OnDrawGizmosSelected() {
 		if (DetectingUnit != null) {
 			Gizmos.color = Color.green;
-			Gizmos.DrawWireSphere(transform.position, DetectingUnit.GetDetectionRange());
+			Gizmos.matrix = Matrix4x4.TRS(transform.position, Quaternion.identity, transform.lossyScale);
+			Gizmos.DrawWireSphere(Vector3.zero, DetectingUnit.GetDetectionRange());
 		}
 	}
 
