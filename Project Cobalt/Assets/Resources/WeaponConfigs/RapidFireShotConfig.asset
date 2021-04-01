@@ -21,6 +21,11 @@ MonoBehaviour:
   - {fileID: 1593435297619264537, guid: 38dcff72984b57a4fb93cba177af8288, type: 3}
   - {fileID: 1593435297619264537, guid: fd50ce845bd156f478d739532da37dbc, type: 3}
   - {fileID: 1593435297619264537, guid: ea19c08ad420fbb409e810ef70111cce, type: 3}
+  audioEffects:
+  - clip: {fileID: 8300000, guid: 9a9de00e75d47cd4e9bbfbabbdc90494, type: 3}
+    volume: 0.1
+  - clip: {fileID: 8300000, guid: 224a9ad5eaf7faf4c944989d6353dc62, type: 3}
+    volume: 0.25
   floatValue:
     keyValuePairs: []
   upgradeMaxAmmo: 3000

@@ -31,6 +31,16 @@ namespace Weapons {
         [SerializeField] GameObject[] instantiatableObjects = new GameObject[0];
         public GameObject[] InstantiatableObjects { get { return instantiatableObjects; } }
 
+
+		[Serializable]
+		public struct SoundEffect {
+			public AudioClip clip;
+			[Range(0,1)]public float volume;
+		}
+
+		[SerializeField] SoundEffect[] audioEffects = new SoundEffect[0];
+		public SoundEffect[] AudioEffects { get { return audioEffects; } }
+
         [SerializeField, HideInInspector] SerializedDictionary<ValueName, float> floatValue = new SerializedDictionary<ValueName, float>();
         public Dictionary<ValueName, float> FloatValue { get { return floatValue; } set { floatValue = (SerializedDictionary<ValueName, float>)value; } }
 

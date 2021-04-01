@@ -40,6 +40,10 @@ namespace Weapons {
 					PlayImpactEffect(impactEffect, hit);
 				}
 			}
+
+			if (configFile.AudioEffects.Length > 0)
+				PlaySoundEffect(configFile.AudioEffects[Random.Range(0, configFile.AudioEffects.Length)]);
+
 		}
 
 		public void InitialisateEffects(Transform muzzleTrans) {

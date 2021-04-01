@@ -13,6 +13,8 @@ namespace Weapons {
 		protected float cooldownTimer;
 		protected int upgradeAmmo = 0;
 
+		protected AudioSource effectSource;
+
 		public void Fire(WeaponFireContext context) {
 			if (ReadyToUse()) {
 				Firing(context);
@@ -66,6 +68,16 @@ namespace Weapons {
 			}
 		}
 
+		public void SetEffectSource(AudioSource audioSource) {
+			effectSource = audioSource;
+		}
+
+		protected void PlaySoundEffect(WeaponConfig.SoundEffect effect) {
+			if (effectSource) {
+				effectSource.PlayOneShot(effect.clip, effect.volume);
+			}
+		}
+
 		public enum WeaponType { MachineGun, MissleLauncher }
 		public static Weapon DefineType(WeaponType weaponType) {
 			switch (weaponType) {
@@ -84,6 +96,7 @@ namespace Weapons {
 			return weapon;
 		}
 		
+
 
 	}
 

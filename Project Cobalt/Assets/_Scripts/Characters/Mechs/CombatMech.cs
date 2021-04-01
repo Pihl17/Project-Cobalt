@@ -34,6 +34,9 @@ public class CombatMech : Mech
 		weapons[0] = gun;
 		weapons[1] = heavy;
 		weapons[2] = artility;
+		for (int i = 0; i < weapons.Length; i++) {
+			weapons[i].SetEffectSource(GetComponent<AudioSource>());
+		}
 	}
 
 	void Update() {
