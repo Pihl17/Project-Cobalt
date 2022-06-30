@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Mortar Strike
   cooldown: 1.5
+  localFirePoint: {x: 0, y: 0.7, z: 0}
   damage: 10
   range: 10
   velocity: 5

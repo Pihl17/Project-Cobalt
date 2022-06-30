@@ -6,14 +6,14 @@ using Weapons;
 public class Rifleman : Human, IDetectingUnit
 {
 
-	Weapon gun;
+	public Weapon gun;
 
 	Transform target;
 	Vector3 toTarget;
 
 	protected override void Initialise() {
 		base.Initialise();
-		gun = Weapon.DefineType(Weapon.WeaponType.MachineGun, config.WeaponConfig);
+		//gun = Weapon.DefineType(Weapon.WeaponType.MachineGun, config.WeaponConfig);
 	}
 
 	// Update is called once per frame
@@ -59,7 +59,7 @@ public class Rifleman : Human, IDetectingUnit
 	}
 
 	void FireAtTarget() {
-		gun.Fire(new WeaponFireContext(transform, target, toTarget, Vector3.forward * 0.25f));
+		gun.Fire(new WeaponFireContext(transform, target, toTarget));
 	}
 
 }

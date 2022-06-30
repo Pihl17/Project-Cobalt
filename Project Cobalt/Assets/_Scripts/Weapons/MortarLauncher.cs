@@ -7,15 +7,15 @@ namespace Weapons {
 	public class MortarLauncher : Weapon
 	{
 
-		public MortarLauncher() {
+		/*public MortarLauncher() {
             configFile = Resources.Load<WeaponConfig>("WeaponConfigs/MortarStrikeConfig");
-        }
+        }*/
 
 		protected override void Firing(WeaponFireContext context) {
-			GameObject newBullet = GameObject.Instantiate(configFile.InstantiatableObjects[0], context.userTrans.position + context.firePos, Quaternion.identity);
-			newBullet.GetComponent<ExplosiveProjectile>().Fire(CalculateMortarVelocity(context.targetVector - context.firePos, configFile.FloatValue[ValueName.MinCurvatureHeight]), configFile.Damage, configFile.FloatValue[ValueName.ExplosionRadius]);
+			GameObject newBullet = GameObject.Instantiate(configFile.InstantiatableObjects[0], transform.position + localFirePoint, Quaternion.identity);
+			newBullet.GetComponent<ExplosiveProjectile>().Fire(CalculateMortarVelocity(context.targetVector - localFirePoint, configFile.FloatValue[ValueName.MinCurvatureHeight]), configFile.Damage, configFile.FloatValue[ValueName.ExplosionRadius]);
 
-			Debug.DrawLine(context.userTrans.position + context.firePos, context.userTrans.position + context.firePos + (context.targetVector - context.firePos), Color.red, 1.0f);
+			Debug.DrawLine(transform.position + localFirePoint, transform.position + localFirePoint + (context.targetVector - localFirePoint), Color.red, 1.0f);
 		}
 
 

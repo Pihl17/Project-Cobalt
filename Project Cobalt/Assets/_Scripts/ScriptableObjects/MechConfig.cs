@@ -18,7 +18,7 @@ public class MechConfig : ScriptableObject
 	[SerializeField] [Range(0, 180)] float lockOnAngle = 90f;
 	public float LockOnAngle { get { return lockOnAngle; } }
 
-
+	[Header("Weapon Placement Locations")]
 	[SerializeField] Vector3 gunLocation = new Vector3();
 	public Vector3 GunLocation { get { return gunLocation; } }
 	[SerializeField] Vector3 heavyLocation = new Vector3();

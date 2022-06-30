@@ -13,8 +13,8 @@ public class CameraFollow : MonoBehaviour
 	Transform followTarget;
 	public CameraPosition cameraPosition = CameraPosition.Default;
 
-	float camFollowSpeed = 4.8f;
-	const float camTurnTime = 0.5f;
+	const float camFollowSpeed = 4.8f;
+	const float camTurnTime = 0.4f;
 	float curCamTurnSpeed = 0.0f;
 
 	Vector3 currentCameraVel;

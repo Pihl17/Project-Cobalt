@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Homing Missles
   cooldown: 0.75
+  localFirePoint: {x: 0, y: 0, z: 0.7}
   damage: 4
   range: 15
   velocity: 10
   instantiatableObjects:
   - {fileID: 4941244308067282116, guid: 58395f7e03ea1da4694265dfc42e0031, type: 3}
+  audioEffects: []
   floatValue:
     keyValuePairs:
     - key: 3

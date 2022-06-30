@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &4782915714244114764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042243041375761828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c80c6f314b9c7428143558da5a1b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configFile: {fileID: 11400000, guid: 84c5516b1ca7f4f4f849648ded23d969, type: 2}
 --- !u!1001 &3726380806391890866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43,6 +56,10 @@ PrefabInstance:
       propertyPath: config
       value: 
       objectReference: {fileID: 11400000, guid: 6d1512f90dee30741bdf9674814b0e73, type: 2}
+    - target: {fileID: 6641977077528376855, guid: 97a3cf45d5d7ca04fb1228cc644097c2, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 4782915714244114764}
     - target: {fileID: 6641977077528376875, guid: 97a3cf45d5d7ca04fb1228cc644097c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.82
@@ -87,5 +104,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1721462489773471412, guid: 97a3cf45d5d7ca04fb1228cc644097c2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 97a3cf45d5d7ca04fb1228cc644097c2, type: 3}
+--- !u!1 &8042243041375761828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6641977077528376854, guid: 97a3cf45d5d7ca04fb1228cc644097c2, type: 3}
+  m_PrefabInstance: {fileID: 3726380806391890866}
+  m_PrefabAsset: {fileID: 0}

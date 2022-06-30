@@ -11,7 +11,7 @@ public class Turret : MonoBehaviour, IDestructible, IDetectingUnit
 	public TurretConfig config;
 
 	float health;
-	Weapon gun;
+	public Weapon gun;
 	WeaponFireContext fireContext;
 	Transform targetInRange;
 
@@ -19,7 +19,6 @@ public class Turret : MonoBehaviour, IDestructible, IDetectingUnit
 	public event DestroyedEvent OnDestroy;
 
 	protected virtual void Initialisation() {
-		gun = Weapon.DefineType(config.WeaponType, config.WeaponConfig);
 		fireContext = new WeaponFireContext();
 		fireContext.userTrans = transform;
 		FindTarget();
@@ -67,7 +66,7 @@ public class Turret : MonoBehaviour, IDestructible, IDetectingUnit
 	void Aim() {
 		if (targetInRange) {
 			fireContext.targetVector = targetInRange.position - transform.position;
-			fireContext.firePos = fireContext.targetVector.normalized * 0.75f;
+			//fireContext.firePos = fireContext.targetVector.normalized * 0.75f;
 			FireGun();
 		}
 	}

@@ -4,10 +4,12 @@ using UnityEngine;
 
 namespace Weapons {
 
-	public abstract class Weapon
+	[RequireComponent(typeof(AudioSource))]
+	public abstract class Weapon : MonoBehaviour
 	{
 
-        protected WeaponConfig configFile;
+        [SerializeReference] protected WeaponConfig configFile;
+		public WeaponConfig ConfigFile { get { return configFile; } }
 		public float Cooldown { get { return configFile.Cooldown; } }
 
 		protected float cooldownTimer;
@@ -15,8 +17,19 @@ namespace Weapons {
 
 		protected AudioSource effectSource;
 
+		protected Vector3 localFirePoint;
+
+		void Start() {
+			Initialisation();
+		}
+
+		protected void Initialisation() {
+			effectSource = GetComponent<AudioSource>();
+		}
+
 		public void Fire(WeaponFireContext context) {
 			if (ReadyToUse()) {
+				localFirePoint = transform.TransformDirection(ConfigFile.LocalFirePoint);
 				Firing(context);
 				PostFireUpdates();
 			}
@@ -68,35 +81,11 @@ namespace Weapons {
 			}
 		}
 
-		public void SetEffectSource(AudioSource audioSource) {
-			effectSource = audioSource;
-		}
-
 		protected void PlaySoundEffect(WeaponConfig.SoundEffect effect) {
 			if (effectSource) {
 				effectSource.PlayOneShot(effect.clip, effect.volume);
 			}
 		}
-
-		public enum WeaponType { MachineGun, MissleLauncher }
-		public static Weapon DefineType(WeaponType weaponType) {
-			switch (weaponType) {
-				case WeaponType.MachineGun:
-					return new MachineGun();
-				case WeaponType.MissleLauncher:
-					return new MissleLauncher();
-			}
-			Debug.LogError("WeaponAdaptor.DefineType does not return any weapons of type " + weaponType.ToString() + " - ADD IT TO THE FUNCTION!");
-			throw new System.Exception();
-		}
-
-		public static Weapon DefineType(WeaponType weaponType, WeaponConfig config) {
-			Weapon weapon = DefineType(weaponType);
-			weapon.SetConfigFile(config);
-			return weapon;
-		}
-		
-
 
 	}
 
@@ -107,13 +96,11 @@ namespace Weapons {
 		public Transform userTrans;
 		public Transform target;
 		public Vector3 targetVector;
-		public Vector3 firePos;
 
-		public WeaponFireContext(Transform _userTrans, Transform _target, Vector3 _targetVector, Vector3 _localFirePos) {
+		public WeaponFireContext(Transform _userTrans, Transform _target, Vector3 _targetVector) {
 			userTrans = _userTrans;
 			target = _target;
 			targetVector = _targetVector;
-			firePos = _userTrans.TransformDirection(_localFirePos);
 		}
 
 	}

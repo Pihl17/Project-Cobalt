@@ -12,17 +12,16 @@ namespace Weapons {
 		ParticleSystem upgradeImpactEffect;
 		Vector3 firePos;
 		Vector3 fireDir;
-
-		public MachineGun() {
-            configFile = Resources.Load<WeaponConfig>("WeaponConfigs/RapidFireShotConfig");
-        }
 	
 
 
 		protected override void Firing(WeaponFireContext context) {
 			InitialisateEffects(context.userTrans);
-			firePos = context.userTrans.position + context.firePos;
-			fireDir = (context.targetVector - context.firePos).normalized;
+			//firePos = context.userTrans.position + context.firePos;
+			//fireDir = (context.targetVector - context.firePos).normalized;
+			firePos = transform.position + localFirePoint;
+			fireDir = (context.targetVector - localFirePoint).normalized;
+
 
 			if (muzzleFlashEffect) {
 				muzzleFlashEffect.transform.position = firePos;

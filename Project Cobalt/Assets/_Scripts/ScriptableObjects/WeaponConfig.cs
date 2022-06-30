@@ -19,6 +19,9 @@ namespace Weapons {
         public float FireRate { get { return 1 / cooldown; } }
 
         [Header("Weapon Specifications")]
+        [SerializeField] Vector3 localFirePoint = new Vector3(0f, 0f, 1.0f);
+        public Vector3 LocalFirePoint { get { return localFirePoint; } }
+
         [SerializeField] float damage = 1;
         public float Damage { get { return damage; } }
 

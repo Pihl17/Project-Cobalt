@@ -19,6 +19,7 @@ MonoBehaviour:
   velocity: 10
   instantiatableObjects:
   - {fileID: 7708169238423857922, guid: cf90031d04eb5474495a3867f02411c5, type: 3}
+  audioEffects: []
   floatValue:
     keyValuePairs:
     - key: 1

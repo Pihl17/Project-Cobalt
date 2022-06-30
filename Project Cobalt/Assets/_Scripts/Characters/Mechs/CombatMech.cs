@@ -6,10 +6,9 @@ using Weapons;
 public class CombatMech : Mech
 {
 	const int numberOfWeapons = 3;
-	protected Weapon[] weapons = new Weapon[numberOfWeapons];
+	[SerializeReference] protected Weapon[] weapons = new Weapon[numberOfWeapons];
 	public Weapon[] Weapons { get { return weapons; } }
 	bool[] triggersHeldDown = new bool[numberOfWeapons];
-	Vector3[] fireLocations;
 
 	public RectTransform lockOnCrosshair;
 	Vector2 crosshairOffCamPos = new Vector2(-200, -200);
@@ -26,17 +25,6 @@ public class CombatMech : Mech
 
 	protected override void Initialisation() {
 		base.Initialisation();
-		fireLocations = new Vector3[numberOfWeapons] {mechConfig.GunLocation, mechConfig.HeavyLocation, mechConfig.ArtilleryLocation};
-		SetWeapons(new MachineGun(), new HomingMissleLauncher(), new MortarLauncher());
-	}
-
-	public void SetWeapons(Weapon gun, Weapon heavy, Weapon artility) {
-		weapons[0] = gun;
-		weapons[1] = heavy;
-		weapons[2] = artility;
-		for (int i = 0; i < weapons.Length; i++) {
-			weapons[i].SetEffectSource(GetComponent<AudioSource>());
-		}
 	}
 
 	void Update() {
@@ -92,7 +80,7 @@ public class CombatMech : Mech
 	}
 
 	WeaponFireContext DefineWeaponFireContext(int index) {
-		return new WeaponFireContext(transform, lockOnTarget, GetToTargetVector(), fireLocations[index]);
+		return new WeaponFireContext(transform, lockOnTarget, GetToTargetVector());
 	}
 
 	Vector3 GetToTargetVector() {
