@@ -80,11 +80,11 @@ public class CombatMech : Mech
 	}
 
 	WeaponFireContext DefineWeaponFireContext(int index) {
-		return new WeaponFireContext(transform, lockOnTarget, GetToTargetVector());
+		return new WeaponFireContext(transform, lockOnTarget, GetToTargetVector(index));
 	}
 
-	Vector3 GetToTargetVector() {
-		return lockOnTarget != null ? lockOnTarget.position - transform.position : transform.forward * mechConfig.LockOnDistrance;
+	Vector3 GetToTargetVector(int index) {
+		return lockOnTarget != null ? lockOnTarget.position - weapons[index].transform.position : transform.forward * mechConfig.LockOnDistrance;
 	}
 
 	protected void UpdateWeaponCooldowns() {

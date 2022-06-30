@@ -65,8 +65,8 @@ public class Turret : MonoBehaviour, IDestructible, IDetectingUnit
 
 	void Aim() {
 		if (targetInRange) {
-			fireContext.targetVector = targetInRange.position - transform.position;
-			//fireContext.firePos = fireContext.targetVector.normalized * 0.75f;
+			fireContext.targetVector = targetInRange.position - gun.transform.position;
+			gun.transform.LookAt(targetInRange, Vector3.up);
 			FireGun();
 		}
 	}

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Missles
   cooldown: 0.75
+  localFirePoint: {x: 0, y: -0.12, z: 1.15}
   damage: 4
   range: 15
   velocity: 10
