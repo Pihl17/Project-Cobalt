@@ -13,8 +13,11 @@ public class CameraFollow : MonoBehaviour
 	Transform followTarget;
 	public CameraPosition cameraPosition = CameraPosition.Default;
 
-	const float camFollowSpeed = 4.8f;
+	//const float camFollowSpeed = 4.8f;
+	const float camFollowTime = 0.2f;
 	const float camTurnTime = 0.4f;
+	
+	Vector3 curCamFollowVel = new Vector3();
 	float curCamTurnSpeed = 0.0f;
 
 	Vector3 currentCameraVel;
@@ -49,7 +52,8 @@ public class CameraFollow : MonoBehaviour
 		camNextRot.y = Mathf.SmoothDampAngle(Camera.main.transform.eulerAngles.y, camNextRot.y, ref curCamTurnSpeed, camTurnTime);
 		Camera.main.transform.eulerAngles = camNextRot;
 
-		camNextPos = Vector3.MoveTowards(camNextPos, followTarget.transform.position, camFollowSpeed * Time.deltaTime);
+		//camNextPos = Vector3.MoveTowards(camNextPos, followTarget.position, camFollowSpeed * Time.deltaTime);
+		camNextPos = Vector3.SmoothDamp(camNextPos, followTarget.position, ref curCamFollowVel, camFollowTime);
 		Camera.main.transform.position = camNextPos + Vector3.up * currentOffset.y + Vector3.right * currentOffset.z * Mathf.Sin(Camera.main.transform.eulerAngles.y * Mathf.Deg2Rad) + Vector3.forward * currentOffset.z * Mathf.Cos(Camera.main.transform.eulerAngles.y * Mathf.Deg2Rad);
 	}
 
