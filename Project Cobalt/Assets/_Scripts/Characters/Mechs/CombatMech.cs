@@ -36,6 +36,10 @@ public class CombatMech : Mech
 		MoveLockOnCrosshair();
 	}
 
+	public void SetWeapons(params Weapon[] _weapons) {
+		weapons = _weapons;
+	}
+
 	void CheckCurrentLockOnTarget() {
 		lockOnMinAngle = mechConfig.LockOnAngle;
 		if (lockOnTarget) {
