@@ -17,8 +17,6 @@ namespace Weapons {
 
 		protected override void Firing(WeaponFireContext context) {
 			InitialisateEffects(context.userTrans);
-			//firePos = context.userTrans.position + context.firePos;
-			//fireDir = (context.targetVector - context.firePos).normalized;
 			firePos = transform.position + localFirePoint;
 			fireDir = (context.targetVector - localFirePoint).normalized;
 

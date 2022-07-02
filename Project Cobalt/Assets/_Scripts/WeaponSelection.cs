@@ -14,8 +14,10 @@ public class WeaponSelection : MonoBehaviour
     {
         if (instance)
             Destroy(gameObject);
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+        else {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
 }

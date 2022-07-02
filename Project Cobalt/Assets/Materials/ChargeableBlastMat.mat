@@ -58,7 +58,7 @@ Material:
     m_Floats:
     - _BlastRange: 0.5
     - _BumpScale: 1
-    - _ChargeProcent: 0.258
+    - _ChargeProcent: 0.29
     - _ChargeProcentWhenFired: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -68,6 +68,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
+    - _MinRange: 0.277
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
