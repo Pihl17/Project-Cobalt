@@ -1886,7 +1886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0378a2bf30612fe42ab811da9380e271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: Scenes/Level - Introductions
+  level: Scenes/Firing Range
 --- !u!1001 &1795255193
 PrefabInstance:
   m_ObjectHideFlags: 0
