@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
 
-    [SerializeReference] GameObject[] menuCanvanses = new GameObject[0];
+    [SerializeReference] protected GameObject[] menuCanvanses = new GameObject[0];
 
 	void Start() {
 		ChangeMenu(menuCanvanses[0]);
