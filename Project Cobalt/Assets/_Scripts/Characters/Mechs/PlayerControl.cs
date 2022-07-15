@@ -76,8 +76,8 @@ public class PlayerControl : MonoBehaviour
 	}
 
 	void StartFire(int index, InputAction.CallbackContext context) {
-		playerMech.FireWeapon(index);
-		playerMech.SetAutomaticFire(index, context.action.phase == InputActionPhase.Performed);
+		if (!PauseMenu.paused || context.action.phase == InputActionPhase.Canceled)
+			playerMech.SetAutomaticFire(index, context.action.phase == InputActionPhase.Performed);
 	}
 
 	void AddListenToMechEvents() {

@@ -17,6 +17,8 @@ public class PauseMenu : MenuManager
 	}
 
 	public void Pause(bool pause) {
+		Time.timeScale = pause ? 0 : 1;
+		AudioListener.pause = pause;
 		paused = pause;
 		pausePanal.SetActive(pause);
 		if (pause)
