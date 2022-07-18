@@ -7,8 +7,7 @@ using Weapons;
 public class WeaponSelectOption : MenuOption
 {
 	
-	public enum WeaponTypes { Light, Heavy, Artillery }
-	[SerializeField] WeaponTypes weaponType = WeaponTypes.Light;
+	[SerializeField] WeaponType weaponType = WeaponType.Light;
 
 	Weapon[] weapons;
 	Text nameText;
@@ -20,13 +19,13 @@ public class WeaponSelectOption : MenuOption
 	void Start() {
 		nameText = GetComponentInChildren<Text>();
 		switch (weaponType) {
-			case WeaponTypes.Light:
+			case WeaponType.Light:
 				weapons = Resources.LoadAll<Weapon>("PlayerMechWeapons/LightWeapons");
 				break;
-			case WeaponTypes.Heavy:
+			case WeaponType.Heavy:
 				weapons = Resources.LoadAll<Weapon>("PlayerMechWeapons/HeavyWeapons");
 				break;
-			case WeaponTypes.Artillery:
+			case WeaponType.Artillery:
 				weapons = Resources.LoadAll<Weapon>("PlayerMechWeapons/ArtilleryWeapons");
 				break;
 		}

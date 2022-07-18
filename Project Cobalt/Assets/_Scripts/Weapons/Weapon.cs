@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace Weapons {
 
+	public enum WeaponType { Light, Heavy, Artillery }
+
 	[RequireComponent(typeof(AudioSource))]
 	public abstract class Weapon : MonoBehaviour
 	{
@@ -13,18 +15,26 @@ namespace Weapons {
 		public float Cooldown { get { return configFile.Cooldown; } }
 
 		protected float cooldownTimer;
+		protected int ammo;
+		public int Ammo { get { return ammo; } }
 		protected int upgradeAmmo = 0;
+		public int UpgradeAmmo { get { return upgradeAmmo; } }
 
 		protected AudioSource effectSource;
-
+		
 		protected Vector3 localFirePoint;
 
 		void Start() {
 			Initialisation();
 		}
 
+		void Update() {
+			UpdateCooldown();
+		}
+
 		protected void Initialisation() {
 			effectSource = GetComponent<AudioSource>();
+			ammo = configFile.MaxAmmo;
 		}
 
 		public void Fire(WeaponFireContext context) {
@@ -41,18 +51,21 @@ namespace Weapons {
 			configFile = weaponConfig;
 		}
 
-        public void UpdateCooldown() {
+        void UpdateCooldown() {
 			cooldownTimer += Time.deltaTime;
 		}
 
 		protected bool ReadyToUse() {
-			return cooldownTimer >= configFile.Cooldown;
+			return cooldownTimer >= configFile.Cooldown && (configFile.UnlimitedAmmo || ammo > 0);
 		}
 
 		protected void PostFireUpdates() {
 			cooldownTimer = 0;
-			if (upgradeAmmo > 0)
+			if (upgradeAmmo > 0) {
 				upgradeAmmo--;
+			} else if (!configFile.UnlimitedAmmo) {
+				ammo--;
+			}
 		}
 
 		public float GetCooldownLeftRatio() {
@@ -61,14 +74,6 @@ namespace Weapons {
 
 		public string GetName() {
 			return configFile.Name;
-		}
-
-		public int GetUpgradeMaxAmmo() {
-			return configFile.UpgradeMaxAmmo;
-		}
-
-		public int GetUpgradeAmmo() {
-			return upgradeAmmo;
 		}
 
 		public void Upgrade() {

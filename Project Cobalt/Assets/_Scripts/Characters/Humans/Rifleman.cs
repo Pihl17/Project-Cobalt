@@ -19,7 +19,6 @@ public class Rifleman : Human, IDetectingUnit
 	// Update is called once per frame
 	void Update()
     {
-		gun.UpdateCooldown();
 		if (target) {
 			toTarget = target.position - transform.position;
 			if (toTarget.magnitude <= config.WeaponConfig.Range) {

@@ -33,9 +33,7 @@ public class Turret : MonoBehaviour, IDestructible, IDetectingUnit
 	}
 
     // Update is called once per frame
-    void Update()
-    {
-		gun.UpdateCooldown();
+    void Update() {
 		Aim();
     }
 

@@ -28,7 +28,6 @@ public class CombatMech : Mech
 	}
 
 	void Update() {
-		UpdateWeaponCooldowns();
 		FindLockOnTarget();
 	}
 
@@ -90,12 +89,6 @@ public class CombatMech : Mech
 	Vector3 GetToTargetVector(int index) {
 		return lockOnTarget != null ? lockOnTarget.position - weapons[index].transform.position : transform.forward * mechConfig.LockOnDistrance;
 	}
-
-	protected void UpdateWeaponCooldowns() {
-		for (int i = 0; i < weapons.Length; i++)
-			weapons[i].UpdateCooldown();
-	}
-
 
 	public void SetAutomaticFire(int index, bool startFire) {
 		if (startFire)

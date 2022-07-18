@@ -18,6 +18,11 @@ namespace Weapons {
         public float Cooldown { get { return cooldown; } }
         public float FireRate { get { return 1 / cooldown; } }
 
+        [SerializeField] bool unlimitedAmmo = true;
+        public bool UnlimitedAmmo { get { return unlimitedAmmo; } }
+        [SerializeField] int maxAmmo = 10;
+        public int MaxAmmo { get { return maxAmmo; } }
+
         [Header("Weapon Specifications")]
         [SerializeField] Vector3 localFirePoint = new Vector3(0f, 0f, 1.0f);
         public Vector3 LocalFirePoint { get { return localFirePoint; } }

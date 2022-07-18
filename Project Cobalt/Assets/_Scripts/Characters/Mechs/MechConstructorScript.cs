@@ -23,6 +23,12 @@ public class MechConstructorScript : MonoBehaviour
         }
         mech.SetWeapons(mechWeapons);
 
+        ConstructAmmoDisplays(mech, mechWeapons);
+    }
+
+    void ConstructAmmoDisplays(CombatMech mech, Weapon[] mechWeapons) {
+        if (mech.gameObject.GetComponentInChildren<PlayerAmmoDisplay>())
+            mech.gameObject.GetComponentInChildren<PlayerAmmoDisplay>().SetWeaponsToTrack(mechWeapons);
     }
 
 }
