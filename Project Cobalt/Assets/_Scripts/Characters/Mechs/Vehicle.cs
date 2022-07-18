@@ -54,6 +54,7 @@ public abstract class Vehicle : MonoBehaviour, IDestructible
 
 	protected virtual void Destroy() {
 		OnDestroy?.Invoke();
+		Destroy(gameObject);
 	}
 
 

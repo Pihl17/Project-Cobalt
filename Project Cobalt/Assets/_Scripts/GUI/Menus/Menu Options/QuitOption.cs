@@ -6,7 +6,7 @@ public class QuitOption : MenuOption
 {
 
 	public override void Select() {
-		print("Quit has been selected");
+		Application.Quit();
 	}
 
 }

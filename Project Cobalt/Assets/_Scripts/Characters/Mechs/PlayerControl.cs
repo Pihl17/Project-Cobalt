@@ -25,15 +25,18 @@ public class PlayerControl : MonoBehaviour
 		playerIn = GetComponent<PlayerInput>();
 		playerMech = GetComponent<CombatMech>();
 		AddListenToMechEvents();
+		AddListenToPlayerInputs();
 
+		OnPlayerInitialisation?.Invoke(playerMech);
+	}
+
+	void AddListenToPlayerInputs() {
 		playerIn.actions.FindAction("PrimaryFire").performed += FirePrimaryWeapon;
 		playerIn.actions.FindAction("PrimaryFire").canceled += FirePrimaryWeapon;
 		playerIn.actions.FindAction("SecondaryFire").performed += FireSecondaryWeapon;
 		playerIn.actions.FindAction("SecondaryFire").canceled += FireSecondaryWeapon;
 		playerIn.actions.FindAction("ArtilleryFire").performed += FireArtilleryWeapon;
 		playerIn.actions.FindAction("ArtilleryFire").canceled += FireArtilleryWeapon;
-
-		OnPlayerInitialisation?.Invoke(playerMech);
 	}
 
 	void FixedUpdate() {
@@ -59,8 +62,7 @@ public class PlayerControl : MonoBehaviour
 	}
 
 	void AnnounchPlayerDestroy() {
-		if (OnPlayerDestroy != null)
-			OnPlayerDestroy.Invoke();
+		OnPlayerDestroy?.Invoke();
 	}
 
 	void FirePrimaryWeapon(InputAction.CallbackContext context) {
@@ -89,12 +91,19 @@ public class PlayerControl : MonoBehaviour
 	private void OnEnable() {
 		if (playerMech) {
 			AddListenToMechEvents();
+			AddListenToPlayerInputs();
 		}
 	}
 
 	private void OnDisable() {
 		playerMech.OnHealthChanged -= AnnounchHealthChange;
 		playerMech.OnDestroy -= AnnounchPlayerDestroy;
+		playerIn.actions.FindAction("PrimaryFire").performed -= FirePrimaryWeapon;
+		playerIn.actions.FindAction("PrimaryFire").canceled -= FirePrimaryWeapon;
+		playerIn.actions.FindAction("SecondaryFire").performed -= FireSecondaryWeapon;
+		playerIn.actions.FindAction("SecondaryFire").canceled -= FireSecondaryWeapon;
+		playerIn.actions.FindAction("ArtilleryFire").performed -= FireArtilleryWeapon;
+		playerIn.actions.FindAction("ArtilleryFire").canceled -= FireArtilleryWeapon;
 	}
 
 }

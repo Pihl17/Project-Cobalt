@@ -45,6 +45,9 @@ public class CameraFollow : MonoBehaviour
 	}
 	
 	void TurnCamera() {
+		if (!followTarget)
+			return;
+
 		currentXRotation = Mathf.SmoothDampAngle(currentXRotation, rotationOffsets[(int)cameraPosition], ref currentXRotationVel, camTransitionTime);
 		currentOffset = Vector3.SmoothDamp(currentOffset, cameraOffsets[(int)cameraPosition], ref currentCameraVel, camTransitionTime);
 
