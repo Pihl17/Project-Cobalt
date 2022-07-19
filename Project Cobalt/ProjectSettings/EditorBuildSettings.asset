@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 1bb128a894a52ac4ba34239afdc74afc
   - enabled: 1
+    path: Assets/Scenes/Firing Range.unity
+    guid: f41df3440e581a44495022fb2bd10a31
+  - enabled: 1
     path: Assets/Scenes/Level - Introductions.unity
     guid: 16762e8cc68ecea45b8d79814c15bac7
-  - enabled: 1
-    path: Assets/Scenes/Firing Range.unity
-    guid: eefa16d781ec0e44da139e5520c41925
   m_configObjects: {}

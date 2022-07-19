@@ -16,7 +16,7 @@ MonoBehaviour:
   moveSpeed: 2.5
   maxMoveSpeed: 5
   turnSpeed: 90
-  lockOnDistance: 15
+  lockOnDistance: 18
   lockOnAngle: 60
   gunLocation: {x: 0, y: 0.283, z: 0.579}
   heavyLocation: {x: 0.608, y: 0.561, z: 0}

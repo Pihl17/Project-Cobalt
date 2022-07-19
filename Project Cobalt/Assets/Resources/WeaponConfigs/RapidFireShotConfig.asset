@@ -17,8 +17,8 @@ MonoBehaviour:
   unlimitedAmmo: 0
   maxAmmo: 5000
   localFirePoint: {x: 0, y: 0, z: 0.33}
-  damage: 0.25
-  range: 15
+  damage: 0.2
+  range: 18
   velocity: 5
   instantiatableObjects:
   - {fileID: 1593435297619264537, guid: 38dcff72984b57a4fb93cba177af8288, type: 3}
