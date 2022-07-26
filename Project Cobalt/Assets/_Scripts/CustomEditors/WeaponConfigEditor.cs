@@ -4,20 +4,12 @@ using UnityEngine;
 using UnityEditor;
 using Weapons;
 
+#if UNITY_EDITOR
+
 [CustomEditor(typeof(WeaponConfig))]
-//[CanEditMultipleObjects]
 public class WeaponConfigEditor : Editor
 {
-
-    //SerializedObject abilityConfig;
-    //SerializedProperty floatValue;
     WeaponConfig script;
-
-    private void OnEnable()
-    {
-        //floatValue = serializedObject.FindProperty("floatValue");
-        
-    }
 
     public override void OnInspectorGUI()
     {
@@ -73,3 +65,5 @@ public class WeaponConfigEditor : Editor
 
 
 }
+
+#endif

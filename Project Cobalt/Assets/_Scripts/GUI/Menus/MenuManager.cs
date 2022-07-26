@@ -17,7 +17,15 @@ public class MenuManager : MonoBehaviour
 		for (int i = 0; i < menuCanvanses.Length; i++) {
 			if (menuCanvanses[i].Equals(toMenu)) {
 				menuCanvanses[i].SetActive(true);
-				EventSystem.current.SetSelectedGameObject(toMenu.GetComponentInChildren<Button>().gameObject);
+
+				Button[] buttons = toMenu.GetComponentsInChildren<Button>(true);
+				for (int j = 0; j < buttons.Length; j++) {
+					if (buttons[j].interactable) {
+						EventSystem.current.SetSelectedGameObject(buttons[j].gameObject);
+						break;
+					}
+				}
+
 			} else
 				menuCanvanses[i].SetActive(false);
 		}

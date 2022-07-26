@@ -16,7 +16,7 @@ public class WeaponSelectOption : MenuOption
 		ChangeWeapon(WeaponSelection.instance.choosenWeapons[(int)weaponType], 1);
 	}
 
-	void Start() {
+	void Awake() {
 		nameText = GetComponentInChildren<Text>();
 		switch (weaponType) {
 			case WeaponType.Light:
@@ -30,6 +30,7 @@ public class WeaponSelectOption : MenuOption
 				break;
 		}
 		ChangeDisplay(WeaponSelection.instance.choosenWeapons[(int)weaponType]);
+		GetComponent<Button>().interactable = weapons.Length > 1;
 	}
 
 	public void ChangeWeapon(Weapon current, int changeIndex) {
