@@ -13,7 +13,7 @@ namespace Weapons {
 
 		protected override void Firing(WeaponFireContext context) {
 			GameObject newBullet = GameObject.Instantiate(configFile.InstantiatableObjects[0], transform.position + localFirePoint, Quaternion.identity);
-			newBullet.GetComponent<ExplosiveProjectile>().Fire(CalculateMortarVelocity(context.targetVector - localFirePoint, configFile.FloatValue[ValueName.MinCurvatureHeight]), configFile.Damage, configFile.FloatValue[ValueName.ExplosionRadius]);
+			newBullet.GetComponent<ExplosiveProjectile>().Fire(CalculateMortarVelocity(context.targetVector - localFirePoint, configFile.FloatValue[ValueName.MinCurvatureHeight]), configFile.Damage, configFile.FloatValue[ValueName.AOERadius]);
 
 			Debug.DrawLine(transform.position + localFirePoint, transform.position + localFirePoint + (context.targetVector - localFirePoint), Color.red, 1.0f);
 		}

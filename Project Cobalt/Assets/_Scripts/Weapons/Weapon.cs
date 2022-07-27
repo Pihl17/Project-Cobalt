@@ -32,7 +32,7 @@ namespace Weapons {
 			UpdateCooldown();
 		}
 
-		protected void Initialisation() {
+		protected virtual void Initialisation() {
 			effectSource = GetComponent<AudioSource>();
 			ammo = configFile.MaxAmmo;
 		}

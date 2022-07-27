@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 390163752701072275}
   - component: {fileID: 390163752701072274}
   - component: {fileID: 390163752701072273}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HeavyPracticeDummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

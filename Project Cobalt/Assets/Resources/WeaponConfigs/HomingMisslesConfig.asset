@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: HomingMisslesConfig
   m_EditorClassIdentifier: 
   abilityName: Homing Missles
-  cooldown: 0.75
+  cooldown: 0.6
   unlimitedAmmo: 0
-  maxAmmo: 80
+  maxAmmo: 120
   localFirePoint: {x: 0, y: 0, z: 0.7}
-  damage: 4
+  damage: 5
   range: 15
   velocity: 10
   instantiatableObjects:

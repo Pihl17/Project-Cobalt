@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 674479239560895824}
   - component: {fileID: 4429080289514445396}
   - component: {fileID: 8241495209034166972}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 6641977077528376853}
   - component: {fileID: 6641977077528376852}
   - component: {fileID: 6641977077528376855}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 6641977077980649582}
   - component: {fileID: 6641977077980649577}
   - component: {fileID: 6641977077980649576}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5105,7 +5105,7 @@ GameObject:
   - component: {fileID: 1281136080930703568}
   - component: {fileID: 7839916309039679325}
   - component: {fileID: 3022854105768834767}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GunHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5296,7 +5296,7 @@ GameObject:
   - component: {fileID: 3736098602885926775}
   - component: {fileID: 1937146140643751286}
   - component: {fileID: 4501666889980145760}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}

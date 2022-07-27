@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5878275394436352832}
   - component: {fileID: 1898727173367610435}
   - component: {fileID: 1062365974513914943}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ReturnToMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 8095416592896390610}
   - component: {fileID: 2551876859614786940}
   - component: {fileID: 1957421127583001249}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 128232936651223580}
   - component: {fileID: 8733771083831445402}
   - component: {fileID: 4275092206186529916}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: PauseMenuCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 5646338381805610013}
   - component: {fileID: 6256990582853184105}
   - component: {fileID: 3256131571009162846}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: PauseMenuPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 3395063592812306867}
   - component: {fileID: 672646997019995791}
   - component: {fileID: 1155480374819544459}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: PauseMenuHeader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   - component: {fileID: 1373987429478826918}
   - component: {fileID: 8436189912639672299}
   - component: {fileID: 9129595053643805783}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: GunAmmoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +611,8 @@ GameObject:
   - component: {fileID: 3109723434666077331}
   - component: {fileID: 3573940043036958358}
   - component: {fileID: 961405574497182283}
-  m_Layer: 5
+  - component: {fileID: 1414666721403170595}
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -679,6 +680,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Return to main menu
+--- !u!114 &1414666721403170595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323627567874413944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab98817176cbb8438668eab76e3aa18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textType: 3
 --- !u!1 &3429434682293789228
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,7 +705,7 @@ GameObject:
   - component: {fileID: 1936375729106138562}
   - component: {fileID: 7117099749105461495}
   - component: {fileID: 7590507476031860632}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: HeavyAmmoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -786,7 +800,7 @@ GameObject:
   - component: {fileID: 4776853979928872148}
   - component: {fileID: 6419793581928337333}
   - component: {fileID: 3249691852097717140}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ResumeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -932,7 +946,7 @@ GameObject:
   - component: {fileID: 2611992052693581125}
   - component: {fileID: 3989310900405067760}
   - component: {fileID: 7524458721017918567}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1075,7 +1089,8 @@ GameObject:
   - component: {fileID: 280641073757001533}
   - component: {fileID: 8710005619119894879}
   - component: {fileID: 3192499797220548973}
-  m_Layer: 5
+  - component: {fileID: 6292772717983609562}
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1143,6 +1158,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Restart level
+--- !u!114 &6292772717983609562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5827595597217313535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab98817176cbb8438668eab76e3aa18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textType: 3
 --- !u!1 &6073765471038778792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,7 +1184,7 @@ GameObject:
   - component: {fileID: 6073765471038778807}
   - component: {fileID: 6073765471038778806}
   - component: {fileID: 2098706188888238041}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1268,7 +1296,7 @@ GameObject:
   - component: {fileID: 6073765471273802790}
   - component: {fileID: 6073765471273802788}
   - component: {fileID: 6073765471273802777}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerMech
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1631,7 +1659,7 @@ GameObject:
   - component: {fileID: 6073765471386120363}
   - component: {fileID: 6073765471386120361}
   - component: {fileID: 6073765471386120360}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Target Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1711,7 +1739,7 @@ GameObject:
   - component: {fileID: 6073765471479956960}
   - component: {fileID: 6073765471479956963}
   - component: {fileID: 6073765471479956962}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Player Overlay Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1813,7 +1841,7 @@ GameObject:
   - component: {fileID: 6073765471572498337}
   - component: {fileID: 6073765471572498351}
   - component: {fileID: 6073765471572498336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1909,7 +1937,7 @@ GameObject:
   - component: {fileID: 6073765471709409356}
   - component: {fileID: 6073765471709409354}
   - component: {fileID: 6073765471709409357}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Bot Left Corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1984,7 +2012,7 @@ GameObject:
   - component: {fileID: 6073765472187058806}
   - component: {fileID: 6073765472187058804}
   - component: {fileID: 6073765472187058807}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Top Right Corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2059,7 +2087,7 @@ GameObject:
   - component: {fileID: 6073765472214424661}
   - component: {fileID: 6073765472214424659}
   - component: {fileID: 6073765472214424658}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Top Left Corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2134,7 +2162,7 @@ GameObject:
   - component: {fileID: 6073765472297444942}
   - component: {fileID: 6073765472297444940}
   - component: {fileID: 6073765472297444943}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Bot Right Corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2209,7 +2237,7 @@ GameObject:
   - component: {fileID: 6073765472933553558}
   - component: {fileID: 6073765472933553556}
   - component: {fileID: 6073765472933553559}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Health Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2286,7 +2314,7 @@ GameObject:
   - component: {fileID: 6124999646803538851}
   - component: {fileID: 2486961611808763306}
   - component: {fileID: 488232240561595634}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: MainPauseMenuCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2387,7 +2415,7 @@ GameObject:
   - component: {fileID: 287170724590921223}
   - component: {fileID: 1147189422013149182}
   - component: {fileID: 6345470924471839507}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: AmmoPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2481,7 +2509,8 @@ GameObject:
   - component: {fileID: 4497161520341743470}
   - component: {fileID: 8248023499439608658}
   - component: {fileID: 5203559295741719283}
-  m_Layer: 5
+  - component: {fileID: 590006924165165554}
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2549,6 +2578,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Resume
+--- !u!114 &590006924165165554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7002773284386041703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab98817176cbb8438668eab76e3aa18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textType: 3
 --- !u!1 &8502515322204475809
 GameObject:
   m_ObjectHideFlags: 0
@@ -2561,7 +2603,7 @@ GameObject:
   - component: {fileID: 5359279478183125497}
   - component: {fileID: 3241103285756960249}
   - component: {fileID: 2192418915882207742}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ArtilleryAmmoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}

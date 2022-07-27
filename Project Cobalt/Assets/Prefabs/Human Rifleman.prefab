@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6432383837016798299}
   - component: {fileID: 6432383837016798300}
   - component: {fileID: 6432383837016798301}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4894,7 +4894,7 @@ GameObject:
   - component: {fileID: 6432383837246377050}
   - component: {fileID: 6432383837246377048}
   - component: {fileID: 6432383837246377049}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4958,7 +4958,7 @@ GameObject:
   - component: {fileID: 6523232363431683860}
   - component: {fileID: 1835928249468207679}
   - component: {fileID: 6987811429152770433}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Human Rifleman
   m_TagString: Untagged
   m_Icon: {fileID: 0}

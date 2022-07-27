@@ -10,25 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa87fea3d3d92224689479c70e1cb7b9, type: 3}
-  m_Name: MortarStrikeConfig
+  m_Name: Heavy Railgun Config
   m_EditorClassIdentifier: 
-  abilityName: Mortar Strike
-  cooldown: 1.5
+  abilityName: Energy Railgun
+  cooldown: 0.8
   unlimitedAmmo: 0
-  maxAmmo: 16
-  localFirePoint: {x: 0, y: 0.7, z: 0}
-  damage: 18
-  range: 10
+  maxAmmo: 50
+  localFirePoint: {x: 0, y: 0, z: 0.76}
+  damage: 8
+  range: 20
   velocity: 5
-  instantiatableObjects:
-  - {fileID: 1751022577508210598, guid: 42862977047ab2944879b53e05961f23, type: 3}
+  instantiatableObjects: []
   audioEffects: []
   floatValue:
     keyValuePairs:
-    - key: 2
-      value: 5
     - key: 1
-      value: 1.5
+      value: 0.4
   upgradeMaxAmmo: 10
   upgradeDamageMultiplier: 1
   damageTime: 0

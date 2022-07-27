@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TextThemeScript : ThemeController
 {
 
-	enum TextType { title, header, regular, health, ammo, upgradeAmmo }
+	enum TextType { title, header, regular, buttonText, health, ammo, upgradeAmmo }
 	[SerializeField] TextType textType = TextType.regular;
 	
 	protected override void ChangeTheme() {
@@ -23,6 +23,9 @@ public class TextThemeScript : ThemeController
 					break;
 				case TextType.regular:
 					gui.color = theme.TextColor;
+					break;
+				case TextType.buttonText:
+					gui.color = theme.ButtonTextColor;
 					break;
 				case TextType.health:
 					gui.color = theme.HealthColor;

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: RapidFireShotConfig
   m_EditorClassIdentifier: 
   abilityName: Machine Gun
-  cooldown: 0.05
+  cooldown: 0.1
   unlimitedAmmo: 0
-  maxAmmo: 5000
+  maxAmmo: 3200
   localFirePoint: {x: 0, y: 0, z: 0.33}
-  damage: 0.2
+  damage: 0.4
   range: 18
   velocity: 5
   instantiatableObjects:
@@ -31,6 +31,6 @@ MonoBehaviour:
     volume: 0.25
   floatValue:
     keyValuePairs: []
-  upgradeMaxAmmo: 3000
+  upgradeMaxAmmo: 750
   upgradeDamageMultiplier: 2
   damageTime: 0

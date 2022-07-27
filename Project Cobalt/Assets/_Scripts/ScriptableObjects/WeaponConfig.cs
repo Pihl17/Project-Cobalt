@@ -5,7 +5,7 @@ using System;
 
 namespace Weapons {
 
-    public enum ValueName { None, ExplosionRadius, MinCurvatureHeight, SeekForce, MaxVelocity, ChargeTime, DamageMultiplier, RangeMultiplier }
+    public enum ValueName { None, AOERadius, MinCurvatureHeight, SeekForce, MaxVelocity, ChargeTime, DamageMultiplier, RangeMultiplier, MaxPierces, MaxTargets }
 
     [CreateAssetMenu(fileName = "WeaponConfig", menuName = "ScriptableObject/WeaponConfig", order = 4)]
     public class WeaponConfig : ScriptableObject
@@ -51,9 +51,10 @@ namespace Weapons {
 
         [SerializeField, HideInInspector] SerializedDictionary<ValueName, float> floatValue = new SerializedDictionary<ValueName, float>();
         public Dictionary<ValueName, float> FloatValue { get { return floatValue; } set { floatValue = (SerializedDictionary<ValueName, float>)value; } }
+        public float FlatValue(ValueName valueName) { return floatValue.ContainsKey(valueName) ? floatValue[valueName] : 0; }
+        public float MultiplicationValue(ValueName valueName) { return floatValue.ContainsKey(valueName) ? floatValue[valueName] : 1; }
 
-
-		[Header("Upgrade Specifications")]
+        [Header("Upgrade Specifications")]
 		[SerializeField] int upgradeMaxAmmo = 10;
 		public int UpgradeMaxAmmo { get { return upgradeMaxAmmo; } }
 

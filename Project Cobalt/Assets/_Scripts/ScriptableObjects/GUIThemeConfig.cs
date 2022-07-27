@@ -17,6 +17,9 @@ public class GUIThemeConfig : ScriptableObject
     [Header("Menu Button Colors")]
     [SerializeField] ColorBlock buttonColors = new ColorBlock();
     public ColorBlock ButtonColors { get { return buttonColors; } }
+    [Space]
+    [SerializeField] Color buttonTextColor = new Color(1, 1, 1);
+    public Color ButtonTextColor { get { return buttonTextColor; } }
 
     [Header("Display Colors")]
     [SerializeField] Color healthColor = new Color(1, 1, 1);
