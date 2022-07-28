@@ -2,36 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosiveProjectile : Projectile
+namespace Weapons.Projectiles
 {
 
-	float explodeRadius = 1;
+	public class ExplosiveProjectile : Projectile
+	{
 
-	public void Fire(Vector3 velocity, float _damage, float _explodeRadius) {
-		base.Fire(velocity, _damage);
-		explodeRadius = _explodeRadius;
-	}
+		float explodeRadius = 1;
 
-	protected override void Initialization() {
-		base.Initialization();
-		OnImpact -= DamageCollision;
-		OnImpact += Explode;
-	}
-
-	void Update() {
-		CheckForSelfDestruct();
-	}
-
-	void Explode(Collision collision) {
-		Explode();
-	}
-
-	void Explode() {
-		Collider[] colInRange = Physics.OverlapSphere(transform.position, explodeRadius);
-		for (int i = 0; i < colInRange.Length; i++) {
-			DamageCollision(colInRange[i]);
+		public void Fire(Vector3 velocity, float _damage, float _explodeRadius) {
+			base.Fire(velocity, _damage);
+			explodeRadius = _explodeRadius;
 		}
-		GameObject.Destroy(gameObject);
-	}
 
+		protected override void Initialization() {
+			base.Initialization();
+			OnImpact -= DamageCollision;
+			OnImpact += Explode;
+		}
+
+		void Update() {
+			CheckForSelfDestruct();
+		}
+
+		void Explode(Collision collision) {
+			Explode();
+		}
+
+		void Explode() {
+			Collider[] colInRange = Physics.OverlapSphere(transform.position, explodeRadius);
+			for (int i = 0; i < colInRange.Length; i++) {
+				DamageCollision(colInRange[i]);
+			}
+			GameObject.Destroy(gameObject);
+		}
+
+	}
 }

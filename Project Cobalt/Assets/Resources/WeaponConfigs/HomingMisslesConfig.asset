@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa87fea3d3d92224689479c70e1cb7b9, type: 3}
   m_Name: HomingMisslesConfig
   m_EditorClassIdentifier: 
-  abilityName: Homing Missles
+  abilityName: Homing Missle Launcher
   cooldown: 0.6
   unlimitedAmmo: 0
   maxAmmo: 120

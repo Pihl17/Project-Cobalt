@@ -2,61 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[RequireComponent(typeof(Rigidbody))]
-public class Projectile : MonoBehaviour
+namespace Weapons.Projectiles
 {
-	public bool enemyBullet;
 
-	float timer = 0;
-	[SerializeField] protected float timeAlive = 3;
-	protected float damage = 2;
+	[RequireComponent(typeof(Rigidbody))]
+	public class Projectile : MonoBehaviour
+	{
+		public bool enemyBullet;
 
-	protected Rigidbody rig;
+		float timer = 0;
+		[SerializeField] protected float timeAlive = 3;
+		protected float damage = 2;
 
-	public delegate void ImpactEvent(Collision collision);
-	public event ImpactEvent OnImpact;
+		protected Rigidbody rig;
 
-
-	public void Fire(Vector3 velocity, float _damage) {
-		Initialization();
-		damage = _damage;
-		rig.velocity = velocity;
-	}
-
-	protected virtual void Initialization() {
-		rig = GetComponent<Rigidbody>();
-		OnImpact += DamageCollision;
-		timer = 0;
-	}
-
-    // Update is called once per frame
-    void Update()
-    {
-		CheckForSelfDestruct();
-    }
-
-	protected void CheckForSelfDestruct() {
-		timer += Time.deltaTime;
-		if (timer > timeAlive)
-			GameObject.Destroy(gameObject);
-	}
+		public delegate void ImpactEvent(Collision collision);
+		public event ImpactEvent OnImpact;
 
 
-	public virtual void OnCollisionEnter(Collision col) {
-		if (OnImpact != null)
-			OnImpact.Invoke(col);
-		GameObject.Destroy(gameObject);
-	}
-
-	protected void DamageCollision(Collider col) {
-		if (col.GetComponent<IDestructible>() != null) {
-			col.GetComponent<IDestructible>().Damage(damage);
+		public void Fire(Vector3 velocity, float _damage) {
+			Initialization();
+			damage = _damage;
+			rig.velocity = velocity;
 		}
-	}
 
-	protected void DamageCollision(Collision col) {
-		DamageCollision(col.collider);
-	}
+		protected virtual void Initialization() {
+			rig = GetComponent<Rigidbody>();
+			OnImpact += DamageCollision;
+			timer = 0;
+		}
 
+		// Update is called once per frame
+		void Update() {
+			CheckForSelfDestruct();
+		}
+
+		protected void CheckForSelfDestruct() {
+			timer += Time.deltaTime;
+			if (timer > timeAlive)
+				GameObject.Destroy(gameObject);
+		}
+
+
+		public virtual void OnCollisionEnter(Collision col) {
+			if (OnImpact != null)
+				OnImpact.Invoke(col);
+			GameObject.Destroy(gameObject);
+		}
+
+		protected void DamageCollision(Collider col) {
+			if (col.GetComponent<IDestructible>() != null) {
+				col.GetComponent<IDestructible>().Damage(damage);
+			}
+		}
+
+		protected void DamageCollision(Collision col) {
+			DamageCollision(col.collider);
+		}
+
+	}
 }

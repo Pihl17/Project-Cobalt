@@ -2,22 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ParticleSystem))]
-public class ProjectileImpactEffectCaller : MonoBehaviour
+namespace Weapons.Projectiles
 {
 
-	void ImpactEffect(Collision collision) {
-		GetComponent<ParticleSystem>().Play();
-		transform.SetParent(null, true);
-	}
+	[RequireComponent(typeof(ParticleSystem))]
+	public class ProjectileImpactEffectCaller : MonoBehaviour
+	{
 
-	void OnEnable() {
-		transform.parent.GetComponent<Projectile>().OnImpact += ImpactEffect;
-	}
+		void ImpactEffect(Collision collision) {
+			GetComponent<ParticleSystem>().Play();
+			transform.SetParent(null, true);
+		}
 
-	void OnDisable() {
-		if (transform.parent)
-			transform.parent.GetComponent<Projectile>().OnImpact -= ImpactEffect;
-	}
+		void OnEnable() {
+			transform.parent.GetComponent<Projectile>().OnImpact += ImpactEffect;
+		}
 
+		void OnDisable() {
+			if (transform.parent)
+				transform.parent.GetComponent<Projectile>().OnImpact -= ImpactEffect;
+		}
+
+	}
 }

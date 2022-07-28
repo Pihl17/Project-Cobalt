@@ -2,22 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ParticleSystem))]
-public class ProjectileTrailEffectCaller : MonoBehaviour
+namespace Weapons.Projectiles
 {
 
-	void StopTrailEffect(Collision collision) {
-		GetComponent<ParticleSystem>().Stop();
-		transform.SetParent(null, true);
-	}
+	[RequireComponent(typeof(ParticleSystem))]
+	public class ProjectileTrailEffectCaller : MonoBehaviour
+	{
 
-	void OnEnable() {
-		transform.parent.GetComponent<Projectile>().OnImpact += StopTrailEffect;
-	}
+		void StopTrailEffect(Collision collision) {
+			GetComponent<ParticleSystem>().Stop();
+			transform.SetParent(null, true);
+		}
 
-	void OnDisable() {
-		if (transform.parent)
-			transform.parent.GetComponent<Projectile>().OnImpact -= StopTrailEffect;
-	}
+		void OnEnable() {
+			transform.parent.GetComponent<Projectile>().OnImpact += StopTrailEffect;
+		}
 
+		void OnDisable() {
+			if (transform.parent)
+				transform.parent.GetComponent<Projectile>().OnImpact -= StopTrailEffect;
+		}
+
+	}
 }

@@ -599,7 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab98817176cbb8438668eab76e3aa18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textType: 4
+  textType: 5
 --- !u!1 &3323627567874413944
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,7 +785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab98817176cbb8438668eab76e3aa18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textType: 4
+  textType: 5
 --- !u!1 &4266180370003507095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,7 +1276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab98817176cbb8438668eab76e3aa18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textType: 3
+  textType: 4
 --- !u!1 &6073765471273802769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1396,7 +1396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 8a3d3177e5b978c4bb25ca3c19d93add, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 3
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -1414,10 +1414,6 @@ MonoBehaviour:
     m_ActionName: Mech/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/q,/Keyboard/leftArrow,/Keyboard/e,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: e2e28073-bf60-410c-a0bc-e83c0964e768
-    m_ActionName: Mech/Look[/Mouse/position,/Pen/position]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 54af3d80-ea37-413d-a460-986d1a6cf6e0
     m_ActionName: Mech/Ability0[/Mouse/leftButton,/Keyboard/j]
   - m_PersistentCalls:
@@ -1428,10 +1424,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 6d06dfe7-f83b-4150-9467-ba01ce9b3498
     m_ActionName: Mech/Ability2[/Keyboard/l]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 10dae250-84b7-464d-9b73-17c106d8c9b4
-    m_ActionName: Mech/LookDelta[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 909b2135-c2f2-497c-84b2-69f6f0bcaa9e
@@ -2683,4 +2675,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab98817176cbb8438668eab76e3aa18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textType: 4
+  textType: 5

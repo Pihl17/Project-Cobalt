@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa87fea3d3d92224689479c70e1cb7b9, type: 3}
   m_Name: MortarStrikeConfig
   m_EditorClassIdentifier: 
-  abilityName: Mortar Strike
+  abilityName: Mortar
   cooldown: 1.5
   unlimitedAmmo: 0
   maxAmmo: 16
@@ -28,7 +28,7 @@ MonoBehaviour:
     - key: 2
       value: 5
     - key: 1
-      value: 1.5
+      value: 2.5
   upgradeMaxAmmo: 10
   upgradeDamageMultiplier: 1
   damageTime: 0
